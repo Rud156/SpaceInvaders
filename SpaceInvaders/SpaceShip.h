@@ -23,7 +23,7 @@ namespace Player {
 		Vector2 velocity;
 
 		const int speed = 15;
-		int health = 100;
+		float health = 100;
 
 		const Color _full_health_color = DARKGREEN;
 		const Color _half_health_color = YELLOW;

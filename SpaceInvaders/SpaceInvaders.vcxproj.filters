@@ -28,6 +28,12 @@
     <Filter Include="Header Files\Enums">
       <UniqueIdentifier>{1694f3a2-7c00-4c67-961a-79518910cc03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{fe2e4fa8-fa46-4cf9-bd7a-b9c6c14d4fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{fa6a1c6e-81c5-4dc4-8446-5492c1f85516}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -45,6 +51,9 @@
     <ClInclude Include="Enums.h">
       <Filter>Header Files\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -59,8 +68,11 @@
     <ClCompile Include="SpaceShip.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
     <ClCompile Include="VectorHelpers.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

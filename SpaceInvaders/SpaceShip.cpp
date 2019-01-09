@@ -21,7 +21,7 @@ namespace Player {
 		auto bodyColor = Utils::ExtensionFunctions::LerpColor(
 			this->_zero_health_color,
 			this->_space_ship_color,
-			this->health / 100
+			this->health / 100.0
 		);
 
 		auto x = this->position.x;
@@ -29,16 +29,16 @@ namespace Player {
 
 		this->_shape_points[0] = { x - this->_shooter_width / 2, y - this->_base_height * 2 };
 		this->_shape_points[1] = { x + this->_shooter_width / 2, y - this->_base_height * 2 };
-		this->_shape_points[2] = { x + this->_shooter_width / 2, y - this->_base_height * 1.5 };
-		this->_shape_points[3] = { x + this->_base_width / 4, y - this->_base_height * 1.5 };
+		this->_shape_points[2] = { x + this->_shooter_width / 2, y - this->_base_height * 1.5f };
+		this->_shape_points[3] = { x + this->_base_width / 4, y - this->_base_height * 1.5f };
 		this->_shape_points[4] = { x + this->_base_width / 4, y - this->_base_height / 2 };
 		this->_shape_points[5] = { x + this->_base_width / 2, y - this->_base_height / 2 };
 		this->_shape_points[6] = { x + this->_base_width / 2, y + this->_base_height / 2 };
 		this->_shape_points[7] = { x - this->_base_width / 2, y + this->_base_height / 2 };
 		this->_shape_points[8] = { x - this->_base_width / 2, y - this->_base_height / 2 };
-		this->_shape_points[9] = { x - this->_base_width / 4, x - y - this->_base_height / 2 };
-		this->_shape_points[10] = { x - this->_base_width / 4, y - this->_base_height * 1.5 };
-		this->_shape_points[11] = { x - this->_shooter_width / 2, y - this->_base_height * 1.5 };
+		this->_shape_points[9] = { x - this->_base_width / 4, y - this->_base_height / 2 };
+		this->_shape_points[10] = { x - this->_base_width / 4, y - this->_base_height * 1.5f };
+		this->_shape_points[11] = { x - this->_shooter_width / 2, y - this->_base_height * 1.5f };
 
 		DrawPolyEx(this->_shape_points, 12, bodyColor);
 
@@ -64,6 +64,17 @@ namespace Player {
 	{
 		if (!IsKeyDown(KEY_SPACE) || this->_current_frame_wait_count < 0)
 			this->_current_frame_wait_count = this->_min_frame_wait_count;
+
+		if (IsKeyDown(KEY_LEFT) && IsKeyDown(KEY_RIGHT))
+		{
+			// Do Nothing When Both Keys Are Pressed
+		}
+		else if (IsKeyDown(KEY_LEFT))
+			this->moveShip(Enums::Direction::Left);
+		else if (IsKeyDown(KEY_RIGHT))
+			this->moveShip(Enums::Direction::Right);
+		else if (IsKeyDown(KEY_SPACE))
+			this->shootBullets();
 
 		// TODO: Add Bullets
 	}
@@ -122,6 +133,11 @@ namespace Player {
 
 	void SpaceShip::resetSpaceShip()
 	{
+		// TODO: Reset Bullets Here
+		this->_current_frame_wait_count = this->_min_frame_wait_count;
+		this->health = 100;
+		this->_god_mode = false;
+		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}
 
 	bool SpaceShip::didSpaceShipCollide(float points[2])

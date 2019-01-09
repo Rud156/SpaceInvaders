@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "ExtensionFunctions.h"
 
-#include <iostream>
-
 namespace Utils {
 	float ExtensionFunctions::Map(float from, float fromMin, float fromMax, float toMin, float toMax)
 	{
@@ -26,10 +24,10 @@ namespace Utils {
 
 	Color ExtensionFunctions::LerpColor(Color c1, Color c2, float amount)
 	{
-		auto l0 = Instance()->Lerp(c1.r, c2.r, amount);
-		auto l1 = Instance()->Lerp(c1.g, c2.g, amount);
-		auto l2 = Instance()->Lerp(c1.b, c2.b, amount);
-		auto l3 = Instance()->Lerp(c1.a, c2.a, amount);
+		auto l0 = Lerp(c1.r, c2.r, amount);
+		auto l1 = Lerp(c1.g, c2.g, amount);
+		auto l2 = Lerp(c1.b, c2.b, amount);
+		auto l3 = Lerp(c1.a, c2.a, amount);
 
 		Color color;
 		color.r = l0;

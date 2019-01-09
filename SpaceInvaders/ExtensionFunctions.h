@@ -3,7 +3,7 @@
 #include "raylib.h"
 
 namespace Utils {
-	static class ExtensionFunctions
+	class ExtensionFunctions
 	{
 	public:
 		static float Map(float from, float fromMin, float fromMax, float toMin, float toMax);

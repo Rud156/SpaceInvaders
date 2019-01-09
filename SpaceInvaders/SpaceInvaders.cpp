@@ -3,7 +3,8 @@
 
 #include "pch.h"
 #include "raylib.h"
-#include <iostream>
+
+#include "MainScene.h"
 
 int main()
 {
@@ -13,13 +14,15 @@ int main()
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
 	SetTargetFPS(60);
 
+	Scenes::MainScene *mainScene = new Scenes::MainScene(screenWidth, screenHeight);
+
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
 
-		ClearBackground(RAYWHITE);
+		ClearBackground(BLACK);
 
-		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+		mainScene->draw();
 
 		EndDrawing();
 	}

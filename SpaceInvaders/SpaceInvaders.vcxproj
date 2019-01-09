@@ -162,12 +162,14 @@
   <ItemGroup>
     <ClInclude Include="Enums.h" />
     <ClInclude Include="ExtensionFunctions.h" />
+    <ClInclude Include="MainScene.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SpaceShip.h" />
     <ClInclude Include="VectorHelpers.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ExtensionFunctions.cpp" />
+    <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
