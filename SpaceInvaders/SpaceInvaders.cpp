@@ -23,6 +23,7 @@ int main()
 		ClearBackground(BLACK);
 
 		mainScene->draw();
+		DrawFPS(10, 10);
 
 		EndDrawing();
 	}

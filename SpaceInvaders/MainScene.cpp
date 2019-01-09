@@ -4,7 +4,7 @@
 namespace Scenes {
 	MainScene::MainScene(int windowWidth, int windowHeight)
 	{
-		this->_space_ship = new Player::SpaceShip(windowWidth, windowHeight);
+		this->_space_ship = new Player::SpaceShip();
 	}
 
 	MainScene::~MainScene()

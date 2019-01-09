@@ -21,8 +21,8 @@ namespace Player {
 		Vector2 _ship_points[12];
 
 		std::vector<Common::Bullet*> _bullets;
-		const int _min_frame_wait_count = 7;
-		int _current_frame_wait_count = this->_min_frame_wait_count;
+		const float _min_shoot_wait_time = 0.1f;
+		float _current_shoot_wait_time = this->_min_shoot_wait_time;
 
 		Vector2 _position;
 		Vector2 _velocity;
@@ -40,7 +40,7 @@ namespace Player {
 
 	public:
 
-		SpaceShip(int windowWidth, int windowHeight);
+		SpaceShip();
 
 		void show();
 		void update();

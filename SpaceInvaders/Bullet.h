@@ -11,16 +11,21 @@ namespace Common {
 		float _base_width;
 		float _base_height;
 
-		Color color;
-		float rotation;
+		int _screen_width;
+		int _screen_height;
 
-		Vector2 position;
-		Vector2 velocity;
+		Color _color;
+		float _rotation;
+
+		Vector2 _position;
+		Vector2 _velocity;
 
 	public:
-		Bullet(float xPosition, float yPosition, int size, bool goUp, 
+		Bullet(float xPosition, float yPosition, int size, bool goUp,
 			Color colorValue = WHITE, float rotation = -1);
+		
 		void show();
 		void update();
+		bool isOutOfScreen();
 	};
 }
