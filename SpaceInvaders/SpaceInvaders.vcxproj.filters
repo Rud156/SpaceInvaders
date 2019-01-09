@@ -36,6 +36,9 @@
     <ClInclude Include="SpaceShip.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
+    <ClInclude Include="VectorHelpers.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -49,6 +52,9 @@
     </ClCompile>
     <ClCompile Include="SpaceShip.cpp">
       <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorHelpers.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

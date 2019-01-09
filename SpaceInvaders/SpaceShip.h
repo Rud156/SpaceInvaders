@@ -39,7 +39,7 @@ namespace Player {
 		void show();
 		void update();
 		
-		void moveShip();
+		void moveShip(Direction direction);
 		void setBulletType();
 		void getBulletType(); // TODO: Change to return bullet
 		void shootBullets();

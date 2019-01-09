@@ -163,6 +163,7 @@
     <ClInclude Include="ExtensionFunctions.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SpaceShip.h" />
+    <ClInclude Include="VectorHelpers.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ExtensionFunctions.cpp" />
@@ -174,6 +175,7 @@
     </ClCompile>
     <ClCompile Include="SpaceInvaders.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
+    <ClCompile Include="VectorHelpers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

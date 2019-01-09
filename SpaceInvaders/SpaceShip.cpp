@@ -1,8 +1,15 @@
 #include "pch.h"
 #include "SpaceShip.h"
 #include "ExtensionFunctions.h"
+#include "VectorHelpers.h"
 
 namespace Player {
+	enum Direction
+	{
+		Left,
+		Right
+	};
+
 	SpaceShip::SpaceShip(int windowWidth, int windowHeight)
 	{
 		this->_window_width = windowWidth;
@@ -17,7 +24,7 @@ namespace Player {
 
 	void SpaceShip::show()
 	{
-		auto bodyColor = Utils::ExtensionFunctions::Instance()->LerpColor(
+		auto bodyColor = Utils::ExtensionFunctions::LerpColor(
 			this->_zero_health_color,
 			this->_space_ship_color,
 			this->health / 100
@@ -43,20 +50,20 @@ namespace Player {
 
 		Color currentColor;
 		if (this->health < 50)
-			currentColor = Utils::ExtensionFunctions::Instance()->LerpColor(
+			currentColor = Utils::ExtensionFunctions::LerpColor(
 				this->_zero_health_color,
 				this->_half_health_color,
 				this->health / 50
 			);
 		else
-			currentColor = Utils::ExtensionFunctions::Instance()->LerpColor(
+			currentColor = Utils::ExtensionFunctions::LerpColor(
 				this->_half_health_color,
 				this->_full_health_color,
 				(this->health - 50) / 50
 			);
 
 		DrawRectangle(this->_window_width / 2, this->_window_height - 7,
-			this->_window_width * this->health / 100, 10);
+			this->_window_width * this->health / 100, 10, currentColor);
 	}
 
 	void SpaceShip::update()
@@ -67,8 +74,21 @@ namespace Player {
 		// TODO: Add Bullets
 	}
 
-	void SpaceShip::moveShip()
+	void SpaceShip::moveShip(Direction direction)
 	{
+		if (this->position.x < this->_base_width / 2)
+			this->position.x = this->_base_width / 2 + 1;
+
+		if (this->position.x > this->_window_width - this->_base_width / 2)
+			this->position.x = this->_window_width - this->_base_width / 2 - 1;
+
+		this->velocity = { (float)this->_window_width, 0 };
+		if (direction == Direction::Left)
+			this->velocity = Utils::VectorHelpers::SetMag(this->velocity, -this->speed);
+		else
+			this->velocity = Utils::VectorHelpers::SetMag(this->velocity, this->speed);
+
+		this->position = Utils::VectorHelpers::Add(this->position, this->velocity);
 	}
 
 	void SpaceShip::setBulletType()

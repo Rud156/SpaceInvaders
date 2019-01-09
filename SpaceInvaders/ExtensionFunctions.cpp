@@ -4,25 +4,6 @@
 #include <iostream>
 
 namespace Utils {
-	ExtensionFunctions *ExtensionFunctions::_instance = nullptr;
-
-	ExtensionFunctions::~ExtensionFunctions()
-	{
-		std::cout << "Clearing Instance" << std::endl;
-
-		delete _instance;
-
-		std::cout << "Removing Destructor" << std::endl;
-	}
-
-	ExtensionFunctions * ExtensionFunctions::Instance()
-	{
-		if (_instance == nullptr)
-			_instance = new ExtensionFunctions();
-
-		return _instance;
-	}
-
 	float ExtensionFunctions::Map(float from, float fromMin, float fromMax, float toMin, float toMax)
 	{
 		auto fromAbs = from - fromMin;
