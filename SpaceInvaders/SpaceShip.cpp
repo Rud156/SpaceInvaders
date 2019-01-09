@@ -124,7 +124,7 @@ namespace Player {
 				this->_position.y - this->_base_height * 1.5f,
 				this->_base_width / 10,
 				true,
-				MAGENTA
+				RED
 			));
 			break;
 
