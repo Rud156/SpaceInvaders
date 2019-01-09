@@ -25,6 +25,9 @@
     <Filter Include="Header Files\Player">
       <UniqueIdentifier>{04aa3510-38cb-4dd5-b14f-1b556f61c392}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Enums">
+      <UniqueIdentifier>{1694f3a2-7c00-4c67-961a-79518910cc03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -38,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="VectorHelpers.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Header Files\Enums</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

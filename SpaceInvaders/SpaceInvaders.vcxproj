@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="ExtensionFunctions.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SpaceShip.h" />

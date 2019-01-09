@@ -1,6 +1,7 @@
 #pragma once
 
 #include "raylib.h"
+#include "Enums.h"
 
 namespace Player {
 	class SpaceShip
@@ -22,7 +23,7 @@ namespace Player {
 		Vector2 velocity;
 
 		const int speed = 15;
-		const int health = 100;
+		int health = 100;
 
 		const Color _full_health_color = DARKGREEN;
 		const Color _half_health_color = YELLOW;
@@ -30,7 +31,7 @@ namespace Player {
 		const Color _space_ship_color = SKYBLUE;
 
 		bool _god_mode;
-		int _bullet_color;
+		Enums::BulletType _bullet_type;
 
 	public:
 		
@@ -39,12 +40,12 @@ namespace Player {
 		void show();
 		void update();
 		
-		void moveShip(Direction direction);
-		void setBulletType();
-		void getBulletType(); // TODO: Change to return bullet
+		void moveShip(Enums::Direction direction);
+		void setBulletType(Enums::BulletType bulletType);
+		void getBullet(); // TODO: Change to return bullet
 		void shootBullets();
 
-		void decreaseHealth();
+		void decreaseHealth(float amount);
 		void activateGodMode();
 		
 		bool isDestroyed();

@@ -4,12 +4,6 @@
 #include "VectorHelpers.h"
 
 namespace Player {
-	enum Direction
-	{
-		Left,
-		Right
-	};
-
 	SpaceShip::SpaceShip(int windowWidth, int windowHeight)
 	{
 		this->_window_width = windowWidth;
@@ -19,7 +13,7 @@ namespace Player {
 		this->velocity = { 0, 0 };
 
 		this->_god_mode = false;
-		this->_bullet_color = 0;
+		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}
 
 	void SpaceShip::show()
@@ -74,7 +68,7 @@ namespace Player {
 		// TODO: Add Bullets
 	}
 
-	void SpaceShip::moveShip(Direction direction)
+	void SpaceShip::moveShip(Enums::Direction direction)
 	{
 		if (this->position.x < this->_base_width / 2)
 			this->position.x = this->_base_width / 2 + 1;
@@ -83,7 +77,7 @@ namespace Player {
 			this->position.x = this->_window_width - this->_base_width / 2 - 1;
 
 		this->velocity = { (float)this->_window_width, 0 };
-		if (direction == Direction::Left)
+		if (direction == Enums::Direction::Left)
 			this->velocity = Utils::VectorHelpers::SetMag(this->velocity, -this->speed);
 		else
 			this->velocity = Utils::VectorHelpers::SetMag(this->velocity, this->speed);
@@ -91,11 +85,12 @@ namespace Player {
 		this->position = Utils::VectorHelpers::Add(this->position, this->velocity);
 	}
 
-	void SpaceShip::setBulletType()
+	void SpaceShip::setBulletType(Enums::BulletType bulletType)
 	{
+		this->_bullet_type = bulletType;
 	}
 
-	void SpaceShip::getBulletType()
+	void SpaceShip::getBullet()
 	{
 	}
 
@@ -103,17 +98,26 @@ namespace Player {
 	{
 	}
 
-	void SpaceShip::decreaseHealth()
+	void SpaceShip::decreaseHealth(float amount)
 	{
+		if (!this->_god_mode)
+			this->health -= amount;
 	}
 
 	void SpaceShip::activateGodMode()
 	{
+		this->_god_mode = true;
 	}
 
 	bool SpaceShip::isDestroyed()
 	{
-		return false;
+		if (this->health <= 0) {
+			this->health = 0;
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	void SpaceShip::resetSpaceShip()
