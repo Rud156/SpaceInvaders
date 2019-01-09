@@ -13,7 +13,9 @@ namespace Player {
 		const int _base_width = 70;
 		const int _base_height = this->_base_width / 5;
 		const int _shooter_width = this->_base_width / 10;
-		Vector2 _shape_points[12];
+		
+		const int _ship_points_count = 12;
+		Vector2 _ship_points[12];
 
 
 		const int _min_frame_wait_count = 7;

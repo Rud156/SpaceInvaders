@@ -9,7 +9,7 @@ namespace Player {
 		this->_window_width = windowWidth;
 		this->_window_height = windowHeight;
 
-		this->position = { (float)windowWidth / 2, (float)windowHeight - this->_base_height - 10 };
+		this->position = { (float)windowWidth / 2, (float)windowHeight - this->_base_height - 7 };
 		this->velocity = { 0, 0 };
 
 		this->_god_mode = false;
@@ -27,20 +27,20 @@ namespace Player {
 		auto x = this->position.x;
 		auto y = this->position.y;
 
-		this->_shape_points[0] = { x - this->_shooter_width / 2, y - this->_base_height * 2 };
-		this->_shape_points[1] = { x + this->_shooter_width / 2, y - this->_base_height * 2 };
-		this->_shape_points[2] = { x + this->_shooter_width / 2, y - this->_base_height * 1.5f };
-		this->_shape_points[3] = { x + this->_base_width / 4, y - this->_base_height * 1.5f };
-		this->_shape_points[4] = { x + this->_base_width / 4, y - this->_base_height / 2 };
-		this->_shape_points[5] = { x + this->_base_width / 2, y - this->_base_height / 2 };
-		this->_shape_points[6] = { x + this->_base_width / 2, y + this->_base_height / 2 };
-		this->_shape_points[7] = { x - this->_base_width / 2, y + this->_base_height / 2 };
-		this->_shape_points[8] = { x - this->_base_width / 2, y - this->_base_height / 2 };
-		this->_shape_points[9] = { x - this->_base_width / 4, y - this->_base_height / 2 };
-		this->_shape_points[10] = { x - this->_base_width / 4, y - this->_base_height * 1.5f };
-		this->_shape_points[11] = { x - this->_shooter_width / 2, y - this->_base_height * 1.5f };
+		this->_ship_points[11] = { x - this->_shooter_width / 2, y - this->_base_height * 2 };
+		this->_ship_points[10] = { x + this->_shooter_width / 2, y - this->_base_height * 2 };
+		this->_ship_points[9] = { x + this->_shooter_width / 2, y - this->_base_height * 1.5f };
+		this->_ship_points[8] = { x + this->_base_width / 4, y - this->_base_height * 1.5f };
+		this->_ship_points[7] = { x + this->_base_width / 4, y - this->_base_height / 2 };
+		this->_ship_points[6] = { x + this->_base_width / 2, y - this->_base_height / 2 };
+		this->_ship_points[5] = { x + this->_base_width / 2, y + this->_base_height / 2 };
+		this->_ship_points[4] = { x - this->_base_width / 2, y + this->_base_height / 2 };
+		this->_ship_points[3] = { x - this->_base_width / 2, y - this->_base_height / 2 };
+		this->_ship_points[2] = { x - this->_base_width / 4, y - this->_base_height / 2 };
+		this->_ship_points[1] = { x - this->_base_width / 4, y - this->_base_height * 1.5f };
+		this->_ship_points[0] = { x - this->_shooter_width / 2, y - this->_base_height * 1.5f };
 
-		DrawPolyEx(this->_shape_points, 12, bodyColor);
+		DrawPolyExLines(this->_ship_points, this->_ship_points_count, bodyColor);
 
 		Color currentColor;
 		if (this->health < 50)
@@ -56,7 +56,7 @@ namespace Player {
 				(this->health - 50) / 50
 			);
 
-		DrawRectangle(this->_window_width / 2, this->_window_height - 7,
+		DrawRectangle(0, this->_window_height - 7,
 			this->_window_width * this->health / 100, 10, currentColor);
 	}
 
@@ -149,11 +149,11 @@ namespace Player {
 		auto y = points[1];
 
 		auto inside = false;
-		for (int i = 0, j = 12 - 1; i < 12; j = i++) {
-			auto xi = this->_shape_points[i].x,
-				yi = this->_shape_points[i].y;
-			auto xj = this->_shape_points[j].x,
-				yj = this->_shape_points[j].y;
+		for (int i = 0, j = this->_ship_points_count - 1; i < this->_ship_points_count; j = i++) {
+			auto xi = this->_ship_points[i].x,
+				yi = this->_ship_points[i].y;
+			auto xj = this->_ship_points[j].x,
+				yj = this->_ship_points[j].y;
 
 			auto intersect = ((yi > y) != (yj > y)) &&
 				(x < (xj - xi) * (y - yi) / (yj - yi) + xi);
