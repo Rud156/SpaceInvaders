@@ -9,8 +9,8 @@ namespace Player {
 		this->_window_width = windowWidth;
 		this->_window_height = windowHeight;
 
-		this->position = { (float)windowWidth / 2, (float)windowHeight - this->_base_height - 7 };
-		this->velocity = { 0, 0 };
+		this->_position = { (float)windowWidth / 2, (float)windowHeight - this->_base_height - 7 };
+		this->_velocity = { 0, 0 };
 
 		this->_god_mode = false;
 		this->_bullet_type = Enums::BulletType::SingleBullet;
@@ -21,11 +21,11 @@ namespace Player {
 		auto bodyColor = Utils::ExtensionFunctions::LerpColor(
 			this->_zero_health_color,
 			this->_space_ship_color,
-			this->health / 100.0
+			this->_health / 100.0
 		);
 
-		auto x = this->position.x;
-		auto y = this->position.y;
+		auto x = this->_position.x;
+		auto y = this->_position.y;
 
 		this->_ship_points[11] = { x - this->_shooter_width / 2, y - this->_base_height * 2 };
 		this->_ship_points[10] = { x + this->_shooter_width / 2, y - this->_base_height * 2 };
@@ -43,21 +43,21 @@ namespace Player {
 		DrawPolyExLines(this->_ship_points, this->_ship_points_count, bodyColor);
 
 		Color currentColor;
-		if (this->health < 50)
+		if (this->_health < 50)
 			currentColor = Utils::ExtensionFunctions::LerpColor(
 				this->_zero_health_color,
 				this->_half_health_color,
-				this->health / 50
+				this->_health / 50
 			);
 		else
 			currentColor = Utils::ExtensionFunctions::LerpColor(
 				this->_half_health_color,
 				this->_full_health_color,
-				(this->health - 50) / 50
+				(this->_health - 50) / 50
 			);
 
 		DrawRectangle(0, this->_window_height - 7,
-			this->_window_width * this->health / 100, 10, currentColor);
+			this->_window_width * this->_health / 100, 10, currentColor);
 	}
 
 	void SpaceShip::update()
@@ -81,19 +81,19 @@ namespace Player {
 
 	void SpaceShip::moveShip(Enums::Direction direction)
 	{
-		if (this->position.x < this->_base_width / 2)
-			this->position.x = this->_base_width / 2 + 1;
+		if (this->_position.x < this->_base_width / 2)
+			this->_position.x = this->_base_width / 2 + 1;
 
-		if (this->position.x > this->_window_width - this->_base_width / 2)
-			this->position.x = this->_window_width - this->_base_width / 2 - 1;
+		if (this->_position.x > this->_window_width - this->_base_width / 2)
+			this->_position.x = this->_window_width - this->_base_width / 2 - 1;
 
-		this->velocity = { (float)this->_window_width, 0 };
+		this->_velocity = { (float)this->_window_width, 0 };
 		if (direction == Enums::Direction::Left)
-			this->velocity = Utils::VectorHelpers::SetMag(this->velocity, -this->speed);
+			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, -this->_speed);
 		else
-			this->velocity = Utils::VectorHelpers::SetMag(this->velocity, this->speed);
+			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed);
 
-		this->position = Utils::VectorHelpers::Add(this->position, this->velocity);
+		this->_position = Utils::VectorHelpers::Add(this->_position, this->_velocity);
 	}
 
 	void SpaceShip::setBulletType(Enums::BulletType bulletType)
@@ -101,18 +101,71 @@ namespace Player {
 		this->_bullet_type = bulletType;
 	}
 
-	void SpaceShip::getBullet()
+	std::vector<Common::Bullet*> SpaceShip::getBullets()
 	{
+		std::vector<Common::Bullet*> bullets;
+
+		switch (this->_bullet_type)
+		{
+		case Enums::BulletType::SingleBullet:
+			bullets.push_back(new Common::Bullet(
+				this->_position.x,
+				this->_position.y - this->_base_height * 1.5f,
+				this->_base_width / 10,
+				true,
+				MAGENTA
+			));
+			break;
+
+		case Enums::BulletType::DoubleBullet:
+			for (int i = 0; i < 2; i++) {
+				int offsetPos;
+				if (i == 0)
+					offsetPos = this->_shooter_width;
+				else
+					offsetPos = -this->_shooter_width;
+
+				bullets.push_back(new Common::Bullet(
+					this->_position.x + offsetPos,
+					this->_position.y - this->_base_height * 1.5f,
+					this->_base_width / 10,
+					true,
+					MAGENTA
+				));
+			}
+			break;
+
+		case Enums::BulletType::SprayBullet:
+			for (int i = 0; i < 80; i++) {
+				bullets.push_back(new Common::Bullet(
+					this->_position.x,
+					this->_position.y - this->_base_height * 1.5f,
+					this->_base_width / 10,
+					true,
+					MAGENTA,
+					-40 + i
+				));
+			}
+			break;
+		}
+
+		return bullets;
 	}
 
 	void SpaceShip::shootBullets()
 	{
+		if (this->_current_frame_wait_count == this->_min_frame_wait_count) {
+			std::vector<Common::Bullet*> bullets = this->getBullets();
+			this->_bullets.insert(this->_bullets.end(), bullets.begin(), bullets.end());
+		}
+
+		this->_current_frame_wait_count -= GetFrameTime();
 	}
 
 	void SpaceShip::decreaseHealth(float amount)
 	{
 		if (!this->_god_mode)
-			this->health -= amount;
+			this->_health -= amount;
 	}
 
 	void SpaceShip::activateGodMode()
@@ -122,8 +175,8 @@ namespace Player {
 
 	bool SpaceShip::isDestroyed()
 	{
-		if (this->health <= 0) {
-			this->health = 0;
+		if (this->_health <= 0) {
+			this->_health = 0;
 			return true;
 		}
 		else {
@@ -135,7 +188,7 @@ namespace Player {
 	{
 		// TODO: Reset Bullets Here
 		this->_current_frame_wait_count = this->_min_frame_wait_count;
-		this->health = 100;
+		this->_health = 100;
 		this->_god_mode = false;
 		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}

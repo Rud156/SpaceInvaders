@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="ExtensionFunctions.h" />
     <ClInclude Include="MainScene.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="VectorHelpers.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="ExtensionFunctions.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="pch.cpp">

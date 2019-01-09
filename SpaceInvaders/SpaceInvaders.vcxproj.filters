@@ -34,6 +34,12 @@
     <Filter Include="Header Files\Scenes">
       <UniqueIdentifier>{fa6a1c6e-81c5-4dc4-8446-5492c1f85516}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{bf4a2aec-a03d-40fc-a84b-51d0fc6b0d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{8666f93c-22ac-4b02-9072-611ad43b7c3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -54,6 +60,9 @@
     <ClInclude Include="MainScene.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -73,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="VectorHelpers.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files\Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
