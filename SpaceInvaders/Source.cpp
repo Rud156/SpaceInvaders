@@ -1,5 +1,0 @@
-enum Direction
-{
-	Left,
-	Right
-};

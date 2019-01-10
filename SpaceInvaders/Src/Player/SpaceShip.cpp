@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SpaceShip.h"
-#include "ExtensionFunctions.h"
-#include "VectorHelpers.h"
+#include "Src/Utils/ExtensionFunctions.h"
+#include "Src/Utils/VectorHelpers.h"
 
 namespace Player {
 	SpaceShip::SpaceShip()

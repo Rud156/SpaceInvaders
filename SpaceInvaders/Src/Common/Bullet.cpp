@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Bullet.h"
-#include "VectorHelpers.h"
+#include "Src/Utils/VectorHelpers.h"
 
 namespace Common {
 	Bullet::Bullet(float xPosition, float yPosition, int size, bool goUp,
