@@ -13,64 +13,64 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{e51153d5-4c13-46c0-888d-5cd5ae960076}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utils">
-      <UniqueIdentifier>{11ba2b4d-8578-4e82-8083-f2d3940c702f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Player">
-      <UniqueIdentifier>{4dff0fc6-f5db-4935-b25e-897826b1926d}</UniqueIdentifier>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{7291fb0d-a544-4833-a5de-bc9fbdfb4d99}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Player">
-      <UniqueIdentifier>{04aa3510-38cb-4dd5-b14f-1b556f61c392}</UniqueIdentifier>
+      <UniqueIdentifier>{ef10518e-ba2a-4da3-92cb-61fb3d8b8203}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Enums">
-      <UniqueIdentifier>{1694f3a2-7c00-4c67-961a-79518910cc03}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Scenes">
-      <UniqueIdentifier>{fe2e4fa8-fa46-4cf9-bd7a-b9c6c14d4fea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Scenes">
-      <UniqueIdentifier>{fa6a1c6e-81c5-4dc4-8446-5492c1f85516}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Common">
-      <UniqueIdentifier>{bf4a2aec-a03d-40fc-a84b-51d0fc6b0d59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Common">
-      <UniqueIdentifier>{8666f93c-22ac-4b02-9072-611ad43b7c3a}</UniqueIdentifier>
+      <UniqueIdentifier>{b2fd35db-3eb9-48b4-ac96-396971cf4297}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Enemies">
-      <UniqueIdentifier>{bc3f6550-4ea2-4893-b015-e1cca5c29e11}</UniqueIdentifier>
+      <UniqueIdentifier>{28c467ce-0f74-4c97-bddd-ec07b6a51b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{e9e57f3e-6049-4d1b-bf1a-d0d0c451f92c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{b337ebf0-de60-4265-9149-ae9eddde7e88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{52adefbe-3acb-44c2-9628-10d083006df6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Enemies">
-      <UniqueIdentifier>{3755cc8b-bb72-45f1-93f7-6aff1053939a}</UniqueIdentifier>
+      <UniqueIdentifier>{562b7cb0-1451-4793-ad83-60975283c08e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{1f658cdb-6373-47b1-b127-22482cdb41fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{9f03ca0e-342f-43ea-b4e3-d1c6f8d9eec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{a8cb349e-e520-448b-918d-7c4300aec3e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExtensionFunctions.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="SpaceShip.h">
-      <Filter>Header Files\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="VectorHelpers.h">
-      <Filter>Header Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Enums.h">
-      <Filter>Header Files\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="MainScene.h">
-      <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
+    <ClInclude Include="Src/Common/Bullet.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
+    <ClInclude Include="Src/Utils/ExtensionFunctions.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Src/Utils/VectorHelpers.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Src/Player/SpaceShip.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Src/Enums/Enums.h">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Src/Enemies/Enemy.h">
       <Filter>Header Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Src/Scenes/MainScene.h">
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -80,23 +80,23 @@
     <ClCompile Include="SpaceInvaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExtensionFunctions.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceShip.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="MainScene.cpp">
-      <Filter>Source Files\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="VectorHelpers.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
+    <ClCompile Include="Src/Common/Bullet.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
+    <ClCompile Include="Src/Enemies/Enemy.cpp">
       <Filter>Source Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Src/Utils/ExtensionFunctions.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Src/Scenes/MainScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Src/Player/SpaceShip.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Src/Utils/VectorHelpers.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

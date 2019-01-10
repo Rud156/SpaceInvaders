@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SpaceShip.h"
-#include "Src/Utils/ExtensionFunctions.h"
-#include "Src/Utils/VectorHelpers.h"
+#include "../Utils/ExtensionFunctions.h"
+#include "../Utils/VectorHelpers.h"
 
 namespace Player {
 	SpaceShip::SpaceShip()
@@ -84,6 +84,7 @@ namespace Player {
 
 		for (int i = 0; i < this->_bullets.size(); i++) {
 			if (this->_bullets[i]->isOutOfScreen()) {
+				delete this->_bullets[i];
 				this->_bullets.erase(this->_bullets.begin() + i);
 				i -= 1;
 			}
@@ -132,9 +133,9 @@ namespace Player {
 			for (int i = 0; i < 2; i++) {
 				int offsetPos;
 				if (i == 0)
-					offsetPos = this->_shooter_width;
+					offsetPos = this->_shooter_width * 0.5f;
 				else
-					offsetPos = -this->_shooter_width;
+					offsetPos = -this->_shooter_width * 1.5f;
 
 				bullets.push_back(new Common::Bullet(
 					this->_position.x + offsetPos,
@@ -147,7 +148,7 @@ namespace Player {
 			break;
 
 		case Enums::BulletType::SprayBullet:
-			for (int i = 0; i < 80; i++) {
+			for (int i = 0; i < 80; i += 10) {
 				bullets.push_back(new Common::Bullet(
 					this->_position.x,
 					this->_position.y - this->_base_height * 1.5f,

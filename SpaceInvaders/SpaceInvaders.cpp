@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "raylib.h"
 
-#include "MainScene.h"
+#include "Src/Scenes/MainScene.h"
 
 int main()
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "raylib.h"
-#include "Src/Common/Bullet.h"
+#include "../Common/Bullet.h"
 #include <vector>
 
 namespace Enemies {

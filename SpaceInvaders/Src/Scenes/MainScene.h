@@ -1,5 +1,5 @@
 #pragma once
-#include "SpaceShip.h"
+#include "../Player/SpaceShip.h"
 
 
 namespace Scenes {

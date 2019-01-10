@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Bullet.h"
-#include "Src/Utils/VectorHelpers.h"
+#include "../Utils/VectorHelpers.h"
 
 namespace Common {
 	Bullet::Bullet(float xPosition, float yPosition, int size, bool goUp,
@@ -23,7 +23,7 @@ namespace Common {
 			this->_velocity = { 0, 45 };
 		else {
 			auto rotation = 45 - this->_rotation;
-			this->_velocity = { -45 + rotation,45 };
+			this->_velocity = { -45 + rotation, 45 };
 		}
 		this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed);
 	}

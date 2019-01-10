@@ -1,8 +1,8 @@
 #pragma once
 
 #include "raylib.h"
-#include "Src/Enums/Enums.h"
-#include "Src/Common/Bullet.h"
+#include "../Enums/Enums.h"
+#include "../Common/Bullet.h"
 
 #include <vector>
 
