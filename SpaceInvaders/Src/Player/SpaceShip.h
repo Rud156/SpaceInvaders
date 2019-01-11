@@ -6,7 +6,8 @@
 
 #include <vector>
 
-namespace Player {
+namespace Player
+{
 	class SpaceShip
 	{
 	private:
@@ -47,7 +48,7 @@ namespace Player {
 
 		void moveShip(Enums::Direction direction);
 		void setBulletType(Enums::BulletType bulletType);
-		std::vector<Common::Bullet*> getBullets(); // TODO: Change to return bullet
+		std::vector<Common::Bullet*> getBullets() const;
 		void shootBullets();
 
 		void decreaseHealth(float amount);
@@ -56,6 +57,6 @@ namespace Player {
 		bool isDestroyed();
 		void resetSpaceShip();
 
-		bool didSpaceShipCollide(float points[2]);
+		bool didSpaceShipCollide(const float points[2]) const;
 	};
 }

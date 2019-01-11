@@ -3,14 +3,15 @@
 #include "../Utils/ExtensionFunctions.h"
 #include "../Utils/VectorHelpers.h"
 
-namespace Player {
+namespace Player
+{
 	SpaceShip::SpaceShip()
 	{
 		this->_window_width = GetScreenWidth();
 		this->_window_height = GetScreenHeight();
 
-		this->_position = { (float)this->_window_width / 2, (float)this->_window_height - this->_base_height - 7 };
-		this->_velocity = { 0, 0 };
+		this->_position = {float(this->_window_width) / 2, float(this->_window_height) - this->_base_height - 7};
+		this->_velocity = {0, 0};
 
 		this->_god_mode = false;
 		this->_bullet_type = Enums::BulletType::SingleBullet;
@@ -18,7 +19,7 @@ namespace Player {
 
 	void SpaceShip::show()
 	{
-		auto bodyColor = Utils::ExtensionFunctions::LerpColor(
+		const auto bodyColor = Utils::ExtensionFunctions::LerpColor(
 			this->_zero_health_color,
 			this->_space_ship_color,
 			this->_health / 100.0f
@@ -27,18 +28,18 @@ namespace Player {
 		auto x = this->_position.x;
 		auto y = this->_position.y;
 
-		this->_ship_points[11] = { x - this->_shooter_width / 2, y - this->_base_height * 2 };
-		this->_ship_points[10] = { x + this->_shooter_width / 2, y - this->_base_height * 2 };
-		this->_ship_points[9] = { x + this->_shooter_width / 2, y - this->_base_height * 1.5f };
-		this->_ship_points[8] = { x + this->_base_width / 4, y - this->_base_height * 1.5f };
-		this->_ship_points[7] = { x + this->_base_width / 4, y - this->_base_height / 2 };
-		this->_ship_points[6] = { x + this->_base_width / 2, y - this->_base_height / 2 };
-		this->_ship_points[5] = { x + this->_base_width / 2, y + this->_base_height / 2 };
-		this->_ship_points[4] = { x - this->_base_width / 2, y + this->_base_height / 2 };
-		this->_ship_points[3] = { x - this->_base_width / 2, y - this->_base_height / 2 };
-		this->_ship_points[2] = { x - this->_base_width / 4, y - this->_base_height / 2 };
-		this->_ship_points[1] = { x - this->_base_width / 4, y - this->_base_height * 1.5f };
-		this->_ship_points[0] = { x - this->_shooter_width / 2, y - this->_base_height * 1.5f };
+		this->_ship_points[11] = {x - this->_shooter_width / 2, y - this->_base_height * 2};
+		this->_ship_points[10] = {x + this->_shooter_width / 2, y - this->_base_height * 2};
+		this->_ship_points[9] = {x + this->_shooter_width / 2, y - this->_base_height * 1.5f};
+		this->_ship_points[8] = {x + this->_base_width / 4, y - this->_base_height * 1.5f};
+		this->_ship_points[7] = {x + this->_base_width / 4, y - this->_base_height / 2};
+		this->_ship_points[6] = {x + this->_base_width / 2, y - this->_base_height / 2};
+		this->_ship_points[5] = {x + this->_base_width / 2, y + this->_base_height / 2};
+		this->_ship_points[4] = {x - this->_base_width / 2, y + this->_base_height / 2};
+		this->_ship_points[3] = {x - this->_base_width / 2, y - this->_base_height / 2};
+		this->_ship_points[2] = {x - this->_base_width / 4, y - this->_base_height / 2};
+		this->_ship_points[1] = {x - this->_base_width / 4, y - this->_base_height * 1.5f};
+		this->_ship_points[0] = {x - this->_shooter_width / 2, y - this->_base_height * 1.5f};
 
 		DrawPolyExLines(this->_ship_points, this->_ship_points_count, bodyColor);
 
@@ -57,7 +58,7 @@ namespace Player {
 			);
 
 		DrawRectangle(0, this->_window_height - 7,
-			this->_window_width * this->_health / 100, 10, currentColor);
+		              this->_window_width * this->_health / 100, 10, currentColor);
 	}
 
 	void SpaceShip::update()
@@ -77,13 +78,16 @@ namespace Player {
 		if (IsKeyDown(KEY_SPACE))
 			this->shootBullets();
 
-		for (auto bullet : this->_bullets) {
+		for (auto bullet : this->_bullets)
+		{
 			bullet->show();
 			bullet->update();
 		}
 
-		for (int i = 0; i < this->_bullets.size(); i++) {
-			if (this->_bullets[i]->isOutOfScreen()) {
+		for (int i = 0; i < this->_bullets.size(); i++)
+		{
+			if (this->_bullets[i]->isOutOfScreen())
+			{
 				delete this->_bullets[i];
 				this->_bullets.erase(this->_bullets.begin() + i);
 				i -= 1;
@@ -99,7 +103,7 @@ namespace Player {
 		if (this->_position.x > this->_window_width - this->_base_width / 2)
 			this->_position.x = this->_window_width - this->_base_width / 2 - 1;
 
-		this->_velocity = { (float)this->_window_width, 0 };
+		this->_velocity = {float(this->_window_width), 0};
 		if (direction == Enums::Direction::Left)
 			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, -this->_speed);
 		else
@@ -113,7 +117,7 @@ namespace Player {
 		this->_bullet_type = bulletType;
 	}
 
-	std::vector<Common::Bullet*> SpaceShip::getBullets()
+	std::vector<Common::Bullet*> SpaceShip::getBullets() const
 	{
 		std::vector<Common::Bullet*> bullets;
 
@@ -130,7 +134,8 @@ namespace Player {
 			break;
 
 		case Enums::BulletType::DoubleBullet:
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 2; i++)
+			{
 				int offsetPos;
 				if (i == 0)
 					offsetPos = this->_shooter_width * 0.5f;
@@ -148,7 +153,8 @@ namespace Player {
 			break;
 
 		case Enums::BulletType::SprayBullet:
-			for (int i = 0; i < 80; i += 10) {
+			for (int i = 0; i < 80; i += 10)
+			{
 				bullets.push_back(new Common::Bullet(
 					this->_position.x,
 					this->_position.y - this->_base_height * 1.5f,
@@ -166,7 +172,8 @@ namespace Player {
 
 	void SpaceShip::shootBullets()
 	{
-		if (this->_current_shoot_wait_time == this->_min_shoot_wait_time) {
+		if (this->_current_shoot_wait_time == this->_min_shoot_wait_time)
+		{
 			std::vector<Common::Bullet*> bullets = this->getBullets();
 			this->_bullets.insert(this->_bullets.end(), bullets.begin(), bullets.end());
 		}
@@ -187,11 +194,13 @@ namespace Player {
 
 	bool SpaceShip::isDestroyed()
 	{
-		if (this->_health <= 0) {
+		if (this->_health <= 0)
+		{
 			this->_health = 0;
 			return true;
 		}
-		else {
+		else
+		{
 			return false;
 		}
 	}
@@ -205,7 +214,7 @@ namespace Player {
 		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}
 
-	bool SpaceShip::didSpaceShipCollide(float points[2])
+	bool SpaceShip::didSpaceShipCollide(const float points[2]) const
 	{
 		// ray-casting algorithm based on
 		// http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
@@ -214,13 +223,14 @@ namespace Player {
 		auto y = points[1];
 
 		auto inside = false;
-		for (int i = 0, j = this->_ship_points_count - 1; i < this->_ship_points_count; j = i++) {
-			auto xi = this->_ship_points[i].x,
-				yi = this->_ship_points[i].y;
-			auto xj = this->_ship_points[j].x,
-				yj = this->_ship_points[j].y;
+		for (auto i = 0, j = this->_ship_points_count - 1; i < this->_ship_points_count; j = i++)
+		{
+			const auto xi = this->_ship_points[i].x;
+			const auto yi = this->_ship_points[i].y;
+			const auto xj = this->_ship_points[j].x;
+			const auto yj = this->_ship_points[j].y;
 
-			auto intersect = ((yi > y) != (yj > y)) &&
+			const auto intersect = ((yi > y) != (yj > y)) &&
 				(x < (xj - xi) * (y - yi) / (yj - yi) + xi);
 			if (intersect) inside = !inside;
 		}

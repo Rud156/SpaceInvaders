@@ -2,15 +2,16 @@
 #include "../Player/SpaceShip.h"
 
 
-namespace Scenes {
+namespace Scenes
+{
 	class MainScene
 	{
 	private:
-		Player::SpaceShip *_space_ship;
+		Player::SpaceShip* _space_ship;
 
 	public:
-		MainScene(int windowWidth, int windowHeight);
+		MainScene();
 		~MainScene();
-		void draw();
+		void draw() const;
 	};
 }

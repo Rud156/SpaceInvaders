@@ -1,6 +1,7 @@
 #pragma once
 
-namespace Enums {
+namespace Enums
+{
 	enum Direction
 	{
 		Left,

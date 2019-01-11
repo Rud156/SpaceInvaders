@@ -1,7 +1,8 @@
 #pragma once
 #include "raylib.h"
 
-namespace Utils {
+namespace Utils
+{
 	class VectorHelpers
 	{
 	public:

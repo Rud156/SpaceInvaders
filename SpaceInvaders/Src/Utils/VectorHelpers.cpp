@@ -2,7 +2,8 @@
 #include "VectorHelpers.h"
 #include <cmath>
 
-namespace Utils {
+namespace Utils
+{
 	float VectorHelpers::MagSq(Vector2 vec)
 	{
 		float x = vec.x;
@@ -34,13 +35,13 @@ namespace Utils {
 
 	Vector2 VectorHelpers::Normalize(Vector2 vec)
 	{
-		float length = VectorHelpers::Mag(vec);
+		const float length = VectorHelpers::Mag(vec);
 		return VectorHelpers::Mult(vec, 1.0 / length);
 	}
 
-	Vector2 VectorHelpers::SetMag(Vector2 vec, float magnitutde)
+	Vector2 VectorHelpers::SetMag(Vector2 vec, float magnitude)
 	{
-		Vector2 normalizedVector = VectorHelpers::Normalize(vec);
-		return VectorHelpers::Mult(normalizedVector, magnitutde);
+		const Vector2 normalizedVector = VectorHelpers::Normalize(vec);
+		return VectorHelpers::Mult(normalizedVector, magnitude);
 	}
 }

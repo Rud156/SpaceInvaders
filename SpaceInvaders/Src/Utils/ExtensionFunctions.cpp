@@ -1,13 +1,14 @@
 #include "pch.h"
 #include "ExtensionFunctions.h"
 
-namespace Utils {
+namespace Utils
+{
 	float ExtensionFunctions::Map(float from, float fromMin, float fromMax, float toMin, float toMax)
 	{
-		auto fromAbs = from - fromMin;
-		auto fromMaxAbs = fromMax - fromMin;
+		const auto fromAbs = from - fromMin;
+		const auto fromMaxAbs = fromMax - fromMin;
 
-		auto normal = fromAbs / fromMaxAbs;
+		const auto normal = fromAbs / fromMaxAbs;
 
 		auto toMaxAbs = toMax - toMin;
 		auto toAbs = toMaxAbs * normal;
@@ -24,10 +25,10 @@ namespace Utils {
 
 	Color ExtensionFunctions::LerpColor(Color c1, Color c2, float amount)
 	{
-		auto l0 = Lerp(c1.r, c2.r, amount);
-		auto l1 = Lerp(c1.g, c2.g, amount);
-		auto l2 = Lerp(c1.b, c2.b, amount);
-		auto l3 = Lerp(c1.a, c2.a, amount);
+		const auto l0 = Lerp(c1.r, c2.r, amount);
+		const auto l1 = Lerp(c1.g, c2.g, amount);
+		const auto l2 = Lerp(c1.b, c2.b, amount);
+		const auto l3 = Lerp(c1.a, c2.a, amount);
 
 		Color color;
 		color.r = l0;

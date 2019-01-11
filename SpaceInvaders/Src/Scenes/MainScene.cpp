@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "MainScene.h"
 
-namespace Scenes {
-	MainScene::MainScene(int windowWidth, int windowHeight)
+namespace Scenes
+{
+	MainScene::MainScene()
 	{
 		this->_space_ship = new Player::SpaceShip();
 	}
@@ -12,7 +13,7 @@ namespace Scenes {
 		delete this->_space_ship;
 	}
 
-	void MainScene::draw()
+	void MainScene::draw() const
 	{
 		// Space Ship Display and Control
 		this->_space_ship->show();

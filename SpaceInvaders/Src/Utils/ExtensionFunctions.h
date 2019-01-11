@@ -2,7 +2,8 @@
 
 #include "raylib.h"
 
-namespace Utils {
+namespace Utils
+{
 	class ExtensionFunctions
 	{
 	public:

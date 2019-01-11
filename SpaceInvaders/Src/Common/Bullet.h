@@ -2,7 +2,8 @@
 
 #include "raylib.h"
 
-namespace Common {
+namespace Common
+{
 	class Bullet
 	{
 	private:
@@ -22,10 +23,10 @@ namespace Common {
 
 	public:
 		Bullet(float xPosition, float yPosition, int size, bool goUp,
-			Color colorValue = WHITE, float rotation = -1);
-		
-		void show();
+		       Color colorValue = WHITE, float rotation = -1);
+
+		void show() const;
 		void update();
-		bool isOutOfScreen();
+		bool isOutOfScreen() const;
 	};
 }

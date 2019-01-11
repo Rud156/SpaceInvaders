@@ -8,13 +8,13 @@
 
 int main()
 {
-	int screenWidth = 800;
-	int screenHeight = 450;
+	const int screenWidth = 800;
+	const int screenHeight = 450;
 
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
 	SetTargetFPS(60);
 
-	Scenes::MainScene *mainScene = new Scenes::MainScene(screenWidth, screenHeight);
+	Scenes::MainScene *mainScene = new Scenes::MainScene();
 
 	while (!WindowShouldClose())
 	{
