@@ -1,7 +1,6 @@
 // SpaceInvaders.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "pch.h"
 #include "raylib.h"
 
 #include "Src/Scenes/MainScene.h"
@@ -14,7 +13,7 @@ int main()
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
 	SetTargetFPS(60);
 
-	Scenes::MainScene *mainScene = new Scenes::MainScene();
+	auto *mainScene = new Scenes::MainScene();
 
 	while (!WindowShouldClose())
 	{

@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "VectorHelpers.h"
 #include <cmath>
 

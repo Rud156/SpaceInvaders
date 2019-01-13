@@ -11,9 +11,12 @@ namespace Enemies {
 		Vector2 _position;
 		int _prev_x;
 
+		int _screen_width;
+		int _screen_height;
+
 		Vector2 _position_to_reach;
 		Vector2 _velocity;
-		Vector2 _accleration;
+		Vector2 _acceleration;
 
 		const int _max_speed = 5;
 		const int _max_force = 5;
@@ -38,6 +41,7 @@ namespace Enemies {
 		const Color _zero_health_color = RED;
 
 	public:
+		Enemy(float xPosition, float yPosition, float enemyBaseWidth);
 		void show();
 		void update();
 		void checkArrival();

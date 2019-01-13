@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "SpaceShip.h"
 #include "../Utils/ExtensionFunctions.h"
 #include "../Utils/VectorHelpers.h"

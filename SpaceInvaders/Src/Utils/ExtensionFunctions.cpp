@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "ExtensionFunctions.h"
 
 namespace Utils
@@ -10,10 +9,10 @@ namespace Utils
 
 		const auto normal = fromAbs / fromMaxAbs;
 
-		auto toMaxAbs = toMax - toMin;
-		auto toAbs = toMaxAbs * normal;
+		const auto toMaxAbs = toMax - toMin;
+		const auto toAbs = toMaxAbs * normal;
 
-		auto to = toAbs + toMin;
+		const auto to = toAbs + toMin;
 
 		return to;
 	}

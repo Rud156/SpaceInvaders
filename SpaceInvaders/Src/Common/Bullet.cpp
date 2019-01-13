@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Bullet.h"
 #include "../Utils/VectorHelpers.h"
 
