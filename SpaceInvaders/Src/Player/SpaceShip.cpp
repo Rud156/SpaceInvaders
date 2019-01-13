@@ -9,7 +9,10 @@ namespace Player
 		this->_window_width = GetScreenWidth();
 		this->_window_height = GetScreenHeight();
 
-		this->_position = {float(this->_window_width) / 2, float(this->_window_height) - this->_base_height - 7};
+		this->_position = {
+			float(this->_window_width) / 2,
+			float(this->_window_height) - this->_base_height - 7
+		};
 		this->_velocity = {0, 0};
 
 		this->_god_mode = false;
@@ -24,21 +27,21 @@ namespace Player
 			this->_health / 100.0f
 		);
 
-		auto x = this->_position.x;
-		auto y = this->_position.y;
+		const auto x = this->_position.x;
+		const auto y = this->_position.y;
 
-		this->_ship_points[11] = {x - this->_shooter_width / 2, y - this->_base_height * 2};
-		this->_ship_points[10] = {x + this->_shooter_width / 2, y - this->_base_height * 2};
-		this->_ship_points[9] = {x + this->_shooter_width / 2, y - this->_base_height * 1.5f};
-		this->_ship_points[8] = {x + this->_base_width / 4, y - this->_base_height * 1.5f};
-		this->_ship_points[7] = {x + this->_base_width / 4, y - this->_base_height / 2};
-		this->_ship_points[6] = {x + this->_base_width / 2, y - this->_base_height / 2};
-		this->_ship_points[5] = {x + this->_base_width / 2, y + this->_base_height / 2};
-		this->_ship_points[4] = {x - this->_base_width / 2, y + this->_base_height / 2};
-		this->_ship_points[3] = {x - this->_base_width / 2, y - this->_base_height / 2};
-		this->_ship_points[2] = {x - this->_base_width / 4, y - this->_base_height / 2};
-		this->_ship_points[1] = {x - this->_base_width / 4, y - this->_base_height * 1.5f};
-		this->_ship_points[0] = {x - this->_shooter_width / 2, y - this->_base_height * 1.5f};
+		this->_ship_points[11] = {x - this->_shooter_width / 2.0f, y - this->_base_height * 2};
+		this->_ship_points[10] = {x + this->_shooter_width / 2.0f, y - this->_base_height * 2};
+		this->_ship_points[9] = {x + this->_shooter_width / 2.0f, y - this->_base_height * 1.5f};
+		this->_ship_points[8] = {x + this->_base_width / 4.0f, y - this->_base_height * 1.5f};
+		this->_ship_points[7] = {x + this->_base_width / 4.0f, y - this->_base_height / 2.0f};
+		this->_ship_points[6] = {x + this->_base_width / 2.0f, y - this->_base_height / 2.0f};
+		this->_ship_points[5] = {x + this->_base_width / 2.0f, y + this->_base_height / 2.0f};
+		this->_ship_points[4] = {x - this->_base_width / 2.0f, y + this->_base_height / 2.0f};
+		this->_ship_points[3] = {x - this->_base_width / 2.0f, y - this->_base_height / 2.0f};
+		this->_ship_points[2] = {x - this->_base_width / 4.0f, y - this->_base_height / 2.0f};
+		this->_ship_points[1] = {x - this->_base_width / 4.0f, y - this->_base_height * 1.5f};
+		this->_ship_points[0] = {x - this->_shooter_width / 2.0f, y - this->_base_height * 1.5f};
 
 		DrawPolyExLines(this->_ship_points, this->_ship_points_count, bodyColor);
 
@@ -47,13 +50,13 @@ namespace Player
 			currentColor = Utils::ExtensionFunctions::LerpColor(
 				this->_zero_health_color,
 				this->_half_health_color,
-				this->_health / 50
+				this->_health / 50.0f
 			);
 		else
 			currentColor = Utils::ExtensionFunctions::LerpColor(
 				this->_half_health_color,
 				this->_full_health_color,
-				(this->_health - 50) / 50
+				(this->_health - 50) / 50.0f
 			);
 
 		DrawRectangle(0, this->_window_height - 7,
@@ -83,7 +86,7 @@ namespace Player
 			bullet->update();
 		}
 
-		for (int i = 0; i < this->_bullets.size(); i++)
+		for (size_t i = 0; i < this->_bullets.size(); i++)
 		{
 			if (this->_bullets[i]->isOutOfScreen())
 			{
@@ -96,11 +99,11 @@ namespace Player
 
 	void SpaceShip::moveShip(Enums::Direction direction)
 	{
-		if (this->_position.x < this->_base_width / 2)
-			this->_position.x = this->_base_width / 2 + 1;
+		if (this->_position.x < this->_base_width / 2.0f)
+			this->_position.x = this->_base_width / 2.0f + 1;
 
-		if (this->_position.x > this->_window_width - this->_base_width / 2)
-			this->_position.x = this->_window_width - this->_base_width / 2 - 1;
+		if (this->_position.x > this->_window_width - this->_base_width / 2.0f)
+			this->_position.x = this->_window_width - this->_base_width / 2.0f - 1;
 
 		this->_velocity = {float(this->_window_width), 0};
 		if (direction == Enums::Direction::Left)
@@ -124,7 +127,7 @@ namespace Player
 		{
 		case Enums::BulletType::SingleBullet:
 			bullets.push_back(new Common::Bullet(
-				this->_position.x - this->_shooter_width / 2,
+				this->_position.x - this->_shooter_width / 2.0f,
 				this->_position.y - this->_base_height * 1.5f,
 				this->_base_width / 10,
 				true,
@@ -139,7 +142,7 @@ namespace Player
 				if (i == 0)
 					offsetPos = this->_shooter_width * 0.5f;
 				else
-					offsetPos = -this->_shooter_width * 1.5f;
+					offsetPos = 1.5f * -this->_shooter_width;
 
 				bullets.push_back(new Common::Bullet(
 					this->_position.x + offsetPos,
@@ -198,10 +201,8 @@ namespace Player
 			this->_health = 0;
 			return true;
 		}
-		else
-		{
-			return false;
-		}
+
+		return false;
 	}
 
 	void SpaceShip::resetSpaceShip()
@@ -218,8 +219,8 @@ namespace Player
 		// ray-casting algorithm based on
 		// http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
 
-		auto x = points[0];
-		auto y = points[1];
+		const auto x = points[0];
+		const auto y = points[1];
 
 		auto inside = false;
 		for (auto i = 0, j = this->_ship_points_count - 1; i < this->_ship_points_count; j = i++)

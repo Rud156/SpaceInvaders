@@ -14,9 +14,9 @@ namespace Player
 		int _window_width;
 		int _window_height;
 
-		const int _base_width = 70;
-		const int _base_height = this->_base_width / 5;
-		const int _shooter_width = this->_base_width / 10;
+		const float _base_width = 70;
+		const float _base_height = this->_base_width / 5;
+		const float _shooter_width = this->_base_width / 10;
 
 		const int _ship_points_count = 12;
 		Vector2 _ship_points[12];

@@ -14,4 +14,11 @@ namespace Enums
 		DoubleBullet,
 		SprayBullet
 	};
+
+	enum Scene
+	{
+		Main,
+		Home,
+		GameOver
+	};
 }

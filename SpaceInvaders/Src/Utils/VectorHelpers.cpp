@@ -32,6 +32,22 @@ namespace Utils
 		return vec1;
 	}
 
+	Vector2 VectorHelpers::Sub(Vector2 vec1, Vector2 vec2)
+	{
+		vec1.x -= vec2.x;
+		vec1.y -= vec2.y;
+
+		return vec1;
+	}
+
+	Vector2 VectorHelpers::Div(Vector2 vec, float factor)
+	{
+		vec.x /= factor;
+		vec.y *= factor;
+
+		return vec;
+	}
+
 	Vector2 VectorHelpers::Normalize(Vector2 vec)
 	{
 		const float length = VectorHelpers::Mag(vec);
@@ -42,5 +58,14 @@ namespace Utils
 	{
 		const Vector2 normalizedVector = VectorHelpers::Normalize(vec);
 		return VectorHelpers::Mult(normalizedVector, magnitude);
+	}
+
+	Vector2 VectorHelpers::Limit(Vector2 vec, float max)
+	{
+		const auto magSq = VectorHelpers::MagSq(vec);
+		if (magSq > max * max)
+			return VectorHelpers::Div(vec, sqrt(magSq));
+
+		return vec;
 	}
 }
