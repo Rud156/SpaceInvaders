@@ -22,7 +22,7 @@ namespace Common
 		Vector2 _velocity;
 
 	public:
-		Bullet(float xPosition, float yPosition, int size, bool goUp,
+		Bullet(float xPosition, float yPosition, float size, bool goUp,
 		       Color colorValue = WHITE, float rotation = -1);
 
 		void show() const;

@@ -3,7 +3,7 @@
 
 namespace Common
 {
-	Bullet::Bullet(float xPosition, float yPosition, int size, bool goUp,
+	Bullet::Bullet(float xPosition, float yPosition, float size, bool goUp,
 	               Color colorValue, float rotation)
 	{
 		this->_go_up = goUp;

@@ -138,7 +138,7 @@ namespace Player
 		case Enums::BulletType::DoubleBullet:
 			for (int i = 0; i < 2; i++)
 			{
-				int offsetPos;
+				float offsetPos;
 				if (i == 0)
 					offsetPos = this->_shooter_width * 0.5f;
 				else
@@ -207,7 +207,10 @@ namespace Player
 
 	void SpaceShip::resetSpaceShip()
 	{
-		// TODO: Reset Bullets Here
+		for (size_t i = 0; i < this->_bullets.size(); i++)
+			delete this->_bullets[i];
+		this->_bullets.clear();
+
 		this->_current_shoot_wait_time = this->_min_shoot_wait_time;
 		this->_health = 100;
 		this->_god_mode = false;
