@@ -1,8 +1,11 @@
 #include "VectorHelpers.h"
 #include <cmath>
+#include <random>
 
 namespace Utils
 {
+	const float VectorHelpers::_two_pi = 6.28318530717958647693f;
+
 	float VectorHelpers::MagSq(Vector2 vec)
 	{
 		float x = vec.x;
@@ -67,5 +70,20 @@ namespace Utils
 			return VectorHelpers::Div(vec, sqrt(magSq));
 
 		return vec;
+	}
+
+	Vector2 VectorHelpers::Random2D()
+	{
+		std::random_device rnd;
+		std::mt19937 gen(rnd());
+		const std::uniform_real_distribution<float> dis(0, 1);
+
+		const float randomValue = dis(gen);
+		return VectorHelpers::FromAngle(randomValue * VectorHelpers::_two_pi);
+	}
+
+	Vector2 VectorHelpers::FromAngle(float angle, float length)
+	{
+		return {length * cos(angle), length * sin(angle)};
 	}
 }
