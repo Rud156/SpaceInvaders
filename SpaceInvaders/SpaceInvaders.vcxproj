@@ -163,6 +163,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Src/Common/Collectible.h" />
+    <ClInclude Include="Src/Common/Explosion.h" />
+    <ClInclude Include="Src/Common/Particle.h" />
     <ClInclude Include="Src/Common/Bullet.h" />
     <ClInclude Include="Src/Enemies/Enemy.h" />
     <ClInclude Include="Src/Enums/Enums.h" />
@@ -172,6 +175,9 @@
     <ClInclude Include="Src/Utils/VectorHelpers.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src/Common/Collectible.cpp" />
+    <ClCompile Include="Src/Common/Explosion.cpp" />
+    <ClCompile Include="Src/Common/Particle.cpp" />
     <ClCompile Include="Src/Common/Bullet.cpp" />
     <ClCompile Include="Src/Enemies/Enemy.cpp" />
     <ClCompile Include="Src/Utils/ExtensionFunctions.cpp" />
