@@ -15,6 +15,13 @@ namespace Enums
 		SprayBullet
 	};
 
+	enum CollectibleType
+	{
+		Level1,
+		Level2,
+		Level3
+	};
+
 	enum Scene
 	{
 		Main,

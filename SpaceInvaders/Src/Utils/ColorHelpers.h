@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "../Enums/Enums.h"
 
 namespace Utils
 {
@@ -8,7 +9,8 @@ namespace Utils
 	public:
 
 		static int HZVToRGB(int hue, int zest, int val);
-
 		static Color HSLAToRGBA(int h, int saturation, int lightness);
+
+		static Color CollectibleTypeToColor(Enums::CollectibleType collectibleType);
 	};
 }

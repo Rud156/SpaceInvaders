@@ -51,4 +51,22 @@ namespace Utils
 
 		return color;
 	}
+
+	Color ColorHelpers::CollectibleTypeToColor(Enums::CollectibleType collectibleType)
+	{
+		switch (collectibleType)
+		{
+		case Enums::Level1:
+			return RED;
+
+		case Enums::Level2:
+			return GREEN;
+
+		case Enums::Level3:
+			return BLUE;
+
+		default:
+			return RAYWHITE;
+		}
+	}
 }
