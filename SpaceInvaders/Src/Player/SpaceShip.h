@@ -28,7 +28,7 @@ namespace Player
 		Vector2 _position;
 		Vector2 _velocity;
 
-		const int _speed = 15;
+		const int _speed = 500;
 		float _health = 100;
 
 		const Color _full_health_color = DARKGREEN;
@@ -58,5 +58,6 @@ namespace Player
 		void resetSpaceShip();
 
 		bool didSpaceShipCollide(const float points[2]) const;
+		Vector2 getSpaceShipPosition() const;
 	};
 }

@@ -4,7 +4,12 @@ namespace Scenes
 {
 	MainScene::MainScene()
 	{
+		this->_screen_width = GetScreenWidth();
+		this->_screen_height = GetScreenHeight();
+
 		this->_space_ship = new Player::SpaceShip();
+		this->_test_enemy = new Enemies::Enemy(GetRandomValue(0, this->_screen_width), -30,
+		                                       GetRandomValue(45, 70));
 	}
 
 	MainScene::~MainScene()
@@ -17,5 +22,11 @@ namespace Scenes
 		// Space Ship Display and Control
 		this->_space_ship->show();
 		this->_space_ship->update();
+
+		// TODO: Testing
+		this->_test_enemy->show();
+		this->_test_enemy->update();
+		this->_test_enemy->checkTargetPointReached();
+		this->_test_enemy->checkAndShootIfNearPlayer(this->_space_ship->getSpaceShipPosition());
 	}
 }

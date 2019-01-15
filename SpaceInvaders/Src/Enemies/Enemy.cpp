@@ -117,7 +117,7 @@ namespace Enemies
 		}
 	}
 
-	void Enemy::checkArrival()
+	void Enemy::checkTargetPointReached()
 	{
 		auto desired = Utils::VectorHelpers::Sub(this->_position_to_reach, this->_position);
 		const auto desiredMag = Utils::VectorHelpers::Mag(desired);

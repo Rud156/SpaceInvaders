@@ -10,7 +10,7 @@ namespace Common
 		Vector2 _position;
 		Vector2 _velocity;
 
-		const int _speed = 2;
+		const int _speed = 67;
 		const int _base_width = 15;
 
 		const int _collectible_points_count = 4;

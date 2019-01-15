@@ -107,9 +107,9 @@ namespace Player
 
 		this->_velocity = {float(this->_window_width), 0};
 		if (direction == Enums::Direction::Left)
-			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, -this->_speed);
+			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, -this->_speed * GetFrameTime());
 		else
-			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed);
+			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed * GetFrameTime());
 
 		this->_position = Utils::VectorHelpers::Add(this->_position, this->_velocity);
 	}
@@ -239,5 +239,10 @@ namespace Player
 		}
 
 		return inside;
+	}
+
+	Vector2 SpaceShip::getSpaceShipPosition() const
+	{
+		return this->_position;
 	}
 }

@@ -7,7 +7,7 @@ namespace Common
 	               Color colorValue, float rotation)
 	{
 		this->_go_up = goUp;
-		this->_speed = this->_go_up ? -10 : 10;
+		this->_speed = this->_go_up ? -334 : 334;
 
 		this->_screen_width = GetScreenWidth();
 		this->_screen_height = GetScreenHeight();
@@ -26,13 +26,13 @@ namespace Common
 			const auto computedRotation = 45 - this->_rotation;
 			this->_velocity = {-45 + computedRotation, 45};
 		}
-		this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed);
+		this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed * GetFrameTime());
 	}
 
 	void Bullet::show() const
 	{
-		auto x = this->_position.x;
-		auto y = this->_position.y;
+		const auto x = this->_position.x;
+		const auto y = this->_position.y;
 
 		const Rectangle rect = {x, y - this->_base_height, this->_base_width, this->_base_height};
 		DrawRectanglePro(rect, {0, 0}, this->_rotation, this->_color);

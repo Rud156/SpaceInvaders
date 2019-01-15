@@ -49,7 +49,7 @@ namespace Enemies
 		Enemy(float xPosition, float yPosition, float enemyBaseWidth);
 		void show();
 		void update();
-		void checkArrival();
+		void checkTargetPointReached();
 
 		void renderBullets();
 		void checkAndShootIfNearPlayer(Vector2 playerPosition);
