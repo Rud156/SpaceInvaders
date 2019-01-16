@@ -1,7 +1,6 @@
 #include "Enemy.h"
 #include "../Utils/ExtensionFunctions.h"
 #include "../Utils/VectorHelpers.h"
-#include <iostream>
 
 namespace Enemies
 {
@@ -17,6 +16,7 @@ namespace Enemies
 			float(GetRandomValue(0, this->_screen_width)),
 			float(GetRandomValue(0, this->_screen_height / 2))
 		};
+
 		this->_velocity = {0, 0};
 		this->_acceleration = {0, 0};
 

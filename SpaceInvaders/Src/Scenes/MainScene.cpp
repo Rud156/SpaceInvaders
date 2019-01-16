@@ -26,6 +26,6 @@ namespace Scenes
 		// TODO: Testing
 		this->_test_enemy->show();
 		this->_test_enemy->update();
-		// this->_test_enemy->checkAndShootIfNearPlayer(this->_space_ship->getSpaceShipPosition());
+		this->_test_enemy->checkAndShootIfNearPlayer(this->_space_ship->getSpaceShipPosition());
 	}
 }

@@ -45,8 +45,11 @@ namespace Utils
 
 	Vector2 VectorHelpers::Div(Vector2 vec, const float factor)
 	{
+		if (factor == 0)
+			return vec;
+
 		vec.x /= factor;
-		vec.y *= factor;
+		vec.y /= factor;
 
 		return vec;
 	}

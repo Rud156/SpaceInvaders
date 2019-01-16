@@ -46,14 +46,14 @@ namespace Enemies
 		std::uniform_real_distribution<float> _dis;
 
 		void checkTargetPointReached();
-
 		void renderBullets();
-		void checkAndShootIfNearPlayer(Vector2 playerPosition);
 
 	public:
 		Enemy(float xPosition, float yPosition, float enemyBaseWidth);
 		void show();
 		void update();
+
+		void checkAndShootIfNearPlayer(Vector2 playerPosition);
 		
 		bool checkAndTakeDamage();
 		bool isEnemyHit(const Vector2 point) const;
