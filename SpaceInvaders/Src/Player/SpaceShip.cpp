@@ -217,13 +217,13 @@ namespace Player
 		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}
 
-	bool SpaceShip::didSpaceShipCollide(const float points[2]) const
+	bool SpaceShip::didSpaceShipCollide(const Vector2 point) const
 	{
 		// ray-casting algorithm based on
 		// http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
 
-		const auto x = points[0];
-		const auto y = points[1];
+		const auto x = point.x;
+		const auto y = point.y;
 
 		auto inside = false;
 		for (auto i = 0, j = this->_ship_points_count - 1; i < this->_ship_points_count; j = i++)

@@ -26,7 +26,6 @@ namespace Common
 			const auto computedRotation = 45 - this->_rotation;
 			this->_velocity = {-45 + computedRotation, 45};
 		}
-		this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed * GetFrameTime());
 	}
 
 	void Bullet::show() const
@@ -40,6 +39,7 @@ namespace Common
 
 	void Bullet::update()
 	{
+		this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed * GetFrameTime());
 		this->_position = Utils::VectorHelpers::Add(this->_position, this->_velocity);
 	}
 

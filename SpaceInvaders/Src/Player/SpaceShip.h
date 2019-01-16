@@ -57,7 +57,7 @@ namespace Player
 		bool isDestroyed();
 		void resetSpaceShip();
 
-		bool didSpaceShipCollide(const float points[2]) const;
+		bool didSpaceShipCollide(const Vector2 point) const;
 		Vector2 getSpaceShipPosition() const;
 	};
 }

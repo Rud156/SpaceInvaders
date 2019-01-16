@@ -13,9 +13,6 @@ namespace Common
 		const int _speed = 67;
 		const int _base_width = 15;
 
-		const int _collectible_points_count = 4;
-		Vector2 _collectible_points[4];
-
 		int _screen_height;
 
 		Enums::CollectibleType _collectibleType;
@@ -24,11 +21,11 @@ namespace Common
 
 	public:
 		Collectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType);
-		
-		void show();
+
+		void show() const;
 		void update();
 
 		bool isOutOfScreen() const;
-		bool didCollectibleCollide(const float points[2]) const;
+		bool didCollectibleCollide(Vector2 point) const;
 	};
 }

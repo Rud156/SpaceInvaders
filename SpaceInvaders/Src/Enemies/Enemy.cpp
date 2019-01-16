@@ -173,19 +173,16 @@ namespace Enemies
 	bool Enemy::checkAndTakeDamage()
 	{
 		this->_current_health -= 20;
-		if (this->_current_health < 0)
-			return true;
-
-		return false;
+		return this->_current_health < 0;
 	}
 
-	bool Enemy::isEnemyHit(const float points[2]) const
+	bool Enemy::isEnemyHit(const Vector2 point) const
 	{
 		// ray-casting algorithm based on
 		// http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
 
-		const auto x = points[0];
-		const auto y = points[1];
+		const auto x = point.x;
+		const auto y = point.y;
 
 		auto inside = false;
 		for (auto i = 0, j = this->_ship_shape_points_count - 1; i < this->_ship_shape_points_count; j = i++)
