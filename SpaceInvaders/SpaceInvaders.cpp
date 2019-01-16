@@ -11,17 +11,16 @@ int main()
 	const int screenHeight = 450;
 
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
-	auto *mainScene = new Scenes::MainScene();
+	const auto mainScene = Scenes::MainScene::Instance();
 
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
-
 		ClearBackground(BLACK);
 
 		mainScene->draw();
-		DrawFPS(10, 10);
 
+		DrawFPS(10, 10);
 		EndDrawing();
 	}
 

@@ -2,6 +2,8 @@
 
 namespace Scenes
 {
+	MainScene* MainScene::_instance = nullptr;
+
 	MainScene::MainScene()
 	{
 		// TODO: Make Main Scene a Singleton so that explosions can be added
@@ -12,6 +14,14 @@ namespace Scenes
 
 		this->_space_ship = new Player::SpaceShip();
 		this->_test_enemy = new Enemies::Enemy(this->_screen_width / 2, this->_screen_height / 2, 30);
+	}
+
+	MainScene* MainScene::Instance()
+	{
+		if (MainScene::_instance == nullptr)
+			MainScene::_instance = new MainScene();
+
+		return MainScene::_instance;
 	}
 
 	MainScene::~MainScene()

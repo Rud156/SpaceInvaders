@@ -14,8 +14,11 @@ namespace Scenes
 		int _screen_width;
 		int _screen_height;
 
-	public:
+		static MainScene *_instance;
 		MainScene();
+
+	public:
+		static MainScene *Instance();
 		~MainScene();
 
 		void draw() const;
