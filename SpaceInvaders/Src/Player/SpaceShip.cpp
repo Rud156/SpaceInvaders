@@ -107,11 +107,12 @@ namespace Player
 
 		this->_velocity = {float(this->_window_width), 0};
 		if (direction == Enums::Direction::Left)
-			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, -this->_speed * GetFrameTime());
+			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, -this->_speed);
 		else
-			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed * GetFrameTime());
+			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed);
 
-		this->_position = Utils::VectorHelpers::Add(this->_position, this->_velocity);
+		this->_position = Utils::VectorHelpers::Add(this->_position,
+		                                            Utils::VectorHelpers::Mult(this->_velocity, GetFrameTime()));
 	}
 
 	void SpaceShip::setBulletType(Enums::BulletType bulletType)

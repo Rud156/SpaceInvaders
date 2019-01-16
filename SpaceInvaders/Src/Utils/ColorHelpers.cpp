@@ -2,7 +2,7 @@
 
 namespace Utils
 {
-	int ColorHelpers::HZVToRGB(int hue, int zest, int val)
+	auto ColorHelpers::HZVToRGB(int hue, const int zest, const int val) -> int
 	{
 		if (hue < 0)
 			hue += 6;
@@ -52,7 +52,7 @@ namespace Utils
 		return color;
 	}
 
-	Color ColorHelpers::CollectibleTypeToColor(Enums::CollectibleType collectibleType)
+	Color ColorHelpers::CollectibleTypeToColor(const Enums::CollectibleType collectibleType)
 	{
 		switch (collectibleType)
 		{

@@ -15,6 +15,7 @@ namespace Scenes
 	MainScene::~MainScene()
 	{
 		delete this->_space_ship;
+		delete this->_test_enemy;
 	}
 
 	void MainScene::draw() const
@@ -24,9 +25,9 @@ namespace Scenes
 		this->_space_ship->update();
 
 		// TODO: Testing
-		this->_test_enemy->show();
-		this->_test_enemy->update();
-		this->_test_enemy->checkTargetPointReached();
-		this->_test_enemy->checkAndShootIfNearPlayer(this->_space_ship->getSpaceShipPosition());
+		// this->_test_enemy->show();
+		// this->_test_enemy->update();
+		// this->_test_enemy->checkTargetPointReached();
+		// this->_test_enemy->checkAndShootIfNearPlayer(this->_space_ship->getSpaceShipPosition());
 	}
 }

@@ -89,7 +89,8 @@ namespace Enemies
 		this->_velocity = Utils::VectorHelpers::Add(this->_velocity, this->_acceleration);
 		this->_velocity = Utils::VectorHelpers::Limit(this->_velocity, this->_max_speed);
 
-		this->_position = Utils::VectorHelpers::Add(this->_position, this->_velocity);
+		this->_position = Utils::VectorHelpers::Add(this->_position,
+		                                            Utils::VectorHelpers::Mult(this->_velocity, GetFrameTime()));
 		this->_acceleration = Utils::VectorHelpers::Mult(this->_acceleration, 0);
 
 		if (Utils::VectorHelpers::Mag(this->_velocity) <= 1)

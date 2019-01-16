@@ -10,6 +10,7 @@ namespace Common
 
 		this->_position = {xPosition, yPosition};
 		this->_velocity = {0, float(_screen_height)};
+		this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed);
 
 		this->_angle = 0;
 
@@ -28,8 +29,8 @@ namespace Common
 
 	void Collectible::update()
 	{
-		this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed * GetFrameTime());
-		this->_position = Utils::VectorHelpers::Add(this->_position, this->_velocity);
+		this->_position = Utils::VectorHelpers::Add(this->_position,
+		                                            Utils::VectorHelpers::Mult(this->_velocity, GetFrameTime()));
 
 		this->_angle = this->_angle + 2.0f * GetFrameTime();
 		this->_angle = this->_angle > 360 ? 0 : this->_angle;

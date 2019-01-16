@@ -29,10 +29,11 @@ namespace Common
 
 	void Particle::update()
 	{
-		this->_velocity = Utils::VectorHelpers::Mult(this->_velocity, 17 * GetFrameTime());
+		this->_velocity = Utils::VectorHelpers::Mult(this->_velocity, 17);
 		this->_velocity = Utils::VectorHelpers::Add(this->_velocity, this->_acceleration);
 
-		this->_position = Utils::VectorHelpers::Add(this->_position, this->_velocity);
+		this->_position = Utils::VectorHelpers::Add(this->_position,
+		                                            Utils::VectorHelpers::Mult(this->_velocity, GetFrameTime()));
 		this->_acceleration = Utils::VectorHelpers::Mult(this->_acceleration, 0);
 	}
 

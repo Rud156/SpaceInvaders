@@ -2,7 +2,8 @@
 
 namespace Utils
 {
-	float ExtensionFunctions::Map(float from, float fromMin, float fromMax, float toMin, float toMax)
+	float ExtensionFunctions::Map(const float from, const float fromMin, const float fromMax, const float toMin,
+	                              const float toMax)
 	{
 		const auto fromAbs = from - fromMin;
 		const auto fromMaxAbs = fromMax - fromMin;
@@ -17,12 +18,12 @@ namespace Utils
 		return to;
 	}
 
-	float ExtensionFunctions::Lerp(float start, float stop, float amount)
+	float ExtensionFunctions::Lerp(const float start, const float stop, const float amount)
 	{
 		return amount * (stop - start) + start;
 	}
 
-	Color ExtensionFunctions::LerpColor(Color c1, Color c2, float amount)
+	Color ExtensionFunctions::LerpColor(const Color c1, const Color c2, const float amount)
 	{
 		const auto l0 = Lerp(c1.r, c2.r, amount);
 		const auto l1 = Lerp(c1.g, c2.g, amount);
