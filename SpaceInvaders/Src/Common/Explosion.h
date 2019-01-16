@@ -18,8 +18,10 @@ namespace Common
 
 	public:
 		Explosion(float positionX, float positionY, float radius);
+
 		void show();
 		void update();
+
 		void explode();
 		bool explosionComplete() const;
 	};

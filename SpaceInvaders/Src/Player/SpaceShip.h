@@ -39,6 +39,13 @@ namespace Player
 		bool _god_mode;
 		Enums::BulletType _bullet_type;
 
+		void moveShip(Enums::Direction direction);
+		void setBulletType(Enums::BulletType bulletType);
+		std::vector<Common::Bullet*> getBullets() const;
+		void shootBullets();
+
+		void activateGodMode();
+
 	public:
 
 		SpaceShip();
@@ -46,14 +53,7 @@ namespace Player
 		void show();
 		void update();
 
-		void moveShip(Enums::Direction direction);
-		void setBulletType(Enums::BulletType bulletType);
-		std::vector<Common::Bullet*> getBullets() const;
-		void shootBullets();
-
 		void decreaseHealth(float amount);
-		void activateGodMode();
-
 		bool isDestroyed();
 		void resetSpaceShip();
 

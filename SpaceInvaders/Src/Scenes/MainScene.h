@@ -17,6 +17,7 @@ namespace Scenes
 	public:
 		MainScene();
 		~MainScene();
+
 		void draw() const;
 	};
 }

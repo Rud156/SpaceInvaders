@@ -78,8 +78,9 @@ namespace Enemies
 		};
 		this->_ship_shape_points[14] = {x - this->_base_width / 2 + this->_base_width / 5, y + this->_base_height / 2};
 		this->_ship_shape_points[15] = {x - this->_base_width / 2, y + this->_base_height / 2};
+		this->_ship_shape_points[16] = {x - this->_base_width / 2, y - this->_base_height * 1.5f};
 
-		DrawPolyExLines(this->_ship_shape_points, this->_ship_shape_points_count, currentColor);
+		DrawPolyExLines(this->_ship_shape_points, this->_ship_shape_points_count, RED);
 	}
 
 	void Enemy::update()
@@ -116,6 +117,8 @@ namespace Enemies
 				i = -1;
 			}
 		}
+
+		this->checkTargetPointReached();
 	}
 
 	void Enemy::checkTargetPointReached()

@@ -20,7 +20,7 @@ namespace Enemies
 		Vector2 _velocity;
 		Vector2 _acceleration;
 
-		const int _max_speed = 5;
+		const int _max_speed = 167;
 		const int _max_force = 5;
 
 		const Color _color = GREEN;
@@ -28,8 +28,8 @@ namespace Enemies
 		float _base_height;
 		float _shooter_height;
 
-		const int _ship_shape_points_count = 12;
-		Vector2 _ship_shape_points[16];
+		const int _ship_shape_points_count = 17;
+		Vector2 _ship_shape_points[17];
 
 		const int _magnitude_limit = 50;
 		std::vector<Common::Bullet*> _bullets;
@@ -45,15 +45,16 @@ namespace Enemies
 		std::mt19937 _gen;
 		std::uniform_real_distribution<float> _dis;
 
-	public:
-		Enemy(float xPosition, float yPosition, float enemyBaseWidth);
-		void show();
-		void update();
 		void checkTargetPointReached();
 
 		void renderBullets();
 		void checkAndShootIfNearPlayer(Vector2 playerPosition);
 
+	public:
+		Enemy(float xPosition, float yPosition, float enemyBaseWidth);
+		void show();
+		void update();
+		
 		bool checkAndTakeDamage();
 		bool isEnemyHit(const Vector2 point) const;
 	};
