@@ -218,6 +218,25 @@ namespace Player
 		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}
 
+	void SpaceShip::checkEnemyCollisionWithBullet(Enemies::Enemy* enemy)
+	{
+		for(size_t i=  0; i < this->_bullets.size(); i++)
+		{
+			if(enemy->isEnemyHit(this->_bullets[i]->getPosition()))
+			{
+				const auto enemyDead = enemy->checkDeathAndTakeDamage();
+				if(enemyDead)
+				{
+					
+				}
+
+				delete this->_bullets[i];
+				this->_bullets.erase(this->_bullets.begin() + i);
+				i = i == 0 ? 0 : i - 1;
+			}
+		}
+	}
+
 	bool SpaceShip::didSpaceShipCollide(const Vector2 point) const
 	{
 		// ray-casting algorithm based on

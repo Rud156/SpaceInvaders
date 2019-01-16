@@ -5,6 +5,7 @@
 #include "../Common/Bullet.h"
 
 #include <vector>
+#include "../Enemies/Enemy.h"
 
 namespace Player
 {
@@ -57,6 +58,7 @@ namespace Player
 		bool isDestroyed();
 		void resetSpaceShip();
 
+		void checkEnemyCollisionWithBullet(Enemies::Enemy* enemy);
 		bool didSpaceShipCollide(const Vector2 point) const;
 		Vector2 getSpaceShipPosition() const;
 	};

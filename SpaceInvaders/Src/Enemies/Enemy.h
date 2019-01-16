@@ -55,7 +55,7 @@ namespace Enemies
 
 		void checkAndShootIfNearPlayer(Vector2 playerPosition);
 		
-		bool checkAndTakeDamage();
+		bool checkDeathAndTakeDamage();
 		bool isEnemyHit(const Vector2 point) const;
 	};
 }

@@ -27,6 +27,7 @@ namespace Common
 
 		void show() const;
 		void update();
+		Vector2 getPosition();
 		bool isOutOfScreen() const;
 	};
 }

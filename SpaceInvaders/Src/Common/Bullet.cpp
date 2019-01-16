@@ -47,6 +47,11 @@ namespace Common
 		                                            Utils::VectorHelpers::Mult(this->_velocity, GetFrameTime()));
 	}
 
+	Vector2 Bullet::getPosition()
+	{
+		return this->_position;
+	}
+
 	bool Bullet::isOutOfScreen() const
 	{
 		return this->_position.y < -this->_base_height || this->_position.x < -this->_base_height ||

@@ -174,7 +174,7 @@ namespace Enemies
 		this->_current_shoot_wait_time -= GetFrameTime();
 	}
 
-	bool Enemy::checkAndTakeDamage()
+	bool Enemy::checkDeathAndTakeDamage()
 	{
 		this->_current_health -= 20;
 		return this->_current_health < 0;

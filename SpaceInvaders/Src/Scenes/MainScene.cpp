@@ -4,6 +4,9 @@ namespace Scenes
 {
 	MainScene::MainScene()
 	{
+		// TODO: Make Main Scene a Singleton so that explosions can be added
+		// Also will be required to remove destroyed enemies and stray bullets
+
 		this->_screen_width = GetScreenWidth();
 		this->_screen_height = GetScreenHeight();
 
