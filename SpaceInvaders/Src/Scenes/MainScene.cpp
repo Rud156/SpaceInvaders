@@ -6,18 +6,15 @@ namespace Scenes
 
 	MainScene::MainScene()
 	{
-		Instance()->_screen_width = GetScreenWidth();
-		Instance()->_screen_height = GetScreenHeight();
-
-		Instance()->_space_ship = new Player::SpaceShip();
+		createOrResetScene();
 	}
 
 	MainScene* MainScene::Instance()
 	{
-		if (MainScene::_instance == nullptr)
-			MainScene::_instance = new MainScene();
+		if (_instance == nullptr)
+			_instance = new MainScene();
 
-		return MainScene::_instance;
+		return _instance;
 	}
 
 	MainScene::~MainScene()
@@ -38,31 +35,18 @@ namespace Scenes
 		Instance()->_explosions.clear();
 	}
 
-	void MainScene::show()
+	void MainScene::createOrResetScene()
 	{
-		// Space Ship Display and Control
-		this->_space_ship->show();
-		this->_space_ship->update();
+		Instance()->_screen_width = GetScreenWidth();
+		Instance()->_screen_height = GetScreenHeight();
 
-		// Explosions and Effects
-		for (size_t i = 0; i < this->_explosions.size(); i++)
-		{
-			this->_explosions[i]->show();
-			this->_explosions[i]->update();
-
-			if (this->_explosions[i]->explosionComplete())
-			{
-				delete this->_explosions[i];
-				this->_explosions.erase(this->_explosions.begin() + i);
-				i = -1;
-			}
-		}
+		Instance()->_space_ship = new Player::SpaceShip();
 	}
 
 	void MainScene::update()
 	{
-		Instance()->updateStaticObjects();
-		Instance()->updateDynamicObjects();
+		updateStaticObjects();
+		updateDynamicObjects();
 	}
 
 	void MainScene::updateStaticObjects()
@@ -96,14 +80,31 @@ namespace Scenes
 
 	void MainScene::updateDynamicObjects()
 	{
+		if (Instance()->_space_ship != nullptr)
+		{
+			Instance()->_space_ship->show();
+			Instance()->_space_ship->update();
+		}
+
+		for (size_t i = 0; i < Instance()->_enemies.size(); i++)
+		{
+			Instance()->_enemies[i]->show();
+			Instance()->_enemies[i]->update();
+
+			if (Instance()->_space_ship != nullptr)
+				Instance()->_enemies[i]->checkAndShootIfNearPlayer(Instance()->_space_ship->getSpaceShipPosition());
+		}
 	}
 
 	void MainScene::addCollectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType)
 	{
+		Instance()->_collectibles.push_back(new Common::Collectible(xPosition, yPosition, collectibleType));
 	}
 
 	void MainScene::destroyEnemy(int enemyIndex)
 	{
+		delete Instance()->_enemies[enemyIndex];
+		Instance()->_enemies.erase(Instance()->_enemies.begin() + enemyIndex);
 	}
 
 	void MainScene::addExplosion(float xPosition, float yPosition, float radius)

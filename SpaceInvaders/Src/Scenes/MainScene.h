@@ -22,18 +22,18 @@ namespace Scenes
 		static MainScene* _instance;
 		MainScene();
 
+		static void updateStaticObjects();
+		static void updateDynamicObjects();
+
 	public:
 		static MainScene* Instance();
 		~MainScene();
 
-		void show();
-		void update();
-
-		void updateStaticObjects();
-		void updateDynamicObjects();
+		static void createOrResetScene();
+		static void update();
 
 		void addExplosion(float xPosition, float yPosition, float radius);
-		void addCollectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType);
-		void destroyEnemy(int enemyIndex);
+		static void addCollectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType);
+		static void destroyEnemy(int enemyIndex);
 	};
 }
