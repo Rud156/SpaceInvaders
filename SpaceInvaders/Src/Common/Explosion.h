@@ -16,13 +16,14 @@ namespace Common
 		Color _color;
 		std::vector<Particle*> _particles;
 
+		void explode();
+
 	public:
-		Explosion(float positionX, float positionY, float radius);
+		Explosion(float xPosition, float yPosition, float radius);
 
 		void show();
 		void update();
 
-		void explode();
 		bool explosionComplete() const;
 	};
 }

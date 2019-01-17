@@ -3,9 +3,9 @@
 
 namespace Common
 {
-	Explosion::Explosion(float positionX, float positionY, float radius)
+	Explosion::Explosion(float xPosition, float yPosition, float radius)
 	{
-		this->_position = {positionX, positionY};
+		this->_position = {xPosition, yPosition};
 		this->_gravity = {0, 0.2f};
 		this->_radius = radius;
 

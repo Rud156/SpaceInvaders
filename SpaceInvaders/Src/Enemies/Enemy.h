@@ -50,6 +50,7 @@ namespace Enemies
 
 	public:
 		Enemy(float xPosition, float yPosition, float enemyBaseWidth);
+		
 		void show();
 		void update();
 
@@ -57,5 +58,7 @@ namespace Enemies
 		
 		bool checkDeathAndTakeDamage();
 		bool isEnemyHit(const Vector2 point) const;
+
+		Vector2 getEnemyPosition() const;
 	};
 }

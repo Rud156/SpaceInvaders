@@ -1,6 +1,8 @@
 #include "SpaceShip.h"
 #include "../Utils/ExtensionFunctions.h"
 #include "../Utils/VectorHelpers.h"
+#include "../Scenes/MainScene.h"
+#include <iostream>
 
 namespace Player
 {
@@ -220,14 +222,26 @@ namespace Player
 
 	void SpaceShip::checkEnemyCollisionWithBullet(Enemies::Enemy* enemy)
 	{
-		for(size_t i=  0; i < this->_bullets.size(); i++)
+		for (size_t i = 0; i < this->_bullets.size(); i++)
 		{
-			if(enemy->isEnemyHit(this->_bullets[i]->getPosition()))
+			if (enemy->isEnemyHit(this->_bullets[i]->getPosition()))
 			{
 				const auto enemyDead = enemy->checkDeathAndTakeDamage();
-				if(enemyDead)
+				std::cout << "Enemy Hit: " << std::endl;
+
+				if (enemyDead)
 				{
-					
+					const Vector2 enemyPosition = enemy->getEnemyPosition();
+					Scenes::MainScene::Instance()->addExplosion(
+						enemyPosition.x,
+						enemyPosition.y,
+						30.0f * 7 / 45.0f
+					);
+
+					std::cout << "Enemy Dead!!!" << std::endl;
+
+					delete enemy;
+					enemy = nullptr;
 				}
 
 				delete this->_bullets[i];

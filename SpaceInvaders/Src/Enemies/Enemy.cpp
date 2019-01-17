@@ -203,4 +203,9 @@ namespace Enemies
 
 		return inside;
 	}
+
+	Vector2 Enemy::getEnemyPosition() const
+	{
+		return  this->_position;
+	}
 }
