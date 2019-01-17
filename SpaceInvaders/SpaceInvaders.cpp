@@ -18,7 +18,7 @@ int main()
 		BeginDrawing();
 		ClearBackground(BLACK);
 
-		mainScene->draw();
+		mainScene->show();
 
 		DrawFPS(10, 10);
 		EndDrawing();

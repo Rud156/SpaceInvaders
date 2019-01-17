@@ -50,6 +50,7 @@ namespace Player
 	public:
 
 		SpaceShip();
+		~SpaceShip();
 
 		void show();
 		void update();
@@ -58,7 +59,7 @@ namespace Player
 		bool isDestroyed();
 		void resetSpaceShip();
 
-		void checkEnemyCollisionWithBullet(Enemies::Enemy* enemy);
+		void checkEnemyCollisionWithBullet(Enemies::Enemy* enemy, int enemyIndex);
 		bool didSpaceShipCollide(const Vector2 point) const;
 		Vector2 getSpaceShipPosition() const;
 	};

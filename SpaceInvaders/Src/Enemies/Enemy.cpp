@@ -33,6 +33,14 @@ namespace Enemies
 		this->_dis = std::uniform_real_distribution<float>(0, 1);
 	}
 
+	Enemy::~Enemy()
+	{
+		for (auto& _bullet : this->_bullets)
+			delete _bullet;
+
+		this->_bullets.clear();
+	}
+
 	void Enemy::show()
 	{
 		Color currentColor;
@@ -206,6 +214,6 @@ namespace Enemies
 
 	Vector2 Enemy::getEnemyPosition() const
 	{
-		return  this->_position;
+		return this->_position;
 	}
 }

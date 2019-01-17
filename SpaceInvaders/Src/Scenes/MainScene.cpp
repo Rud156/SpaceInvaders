@@ -6,14 +6,10 @@ namespace Scenes
 
 	MainScene::MainScene()
 	{
-		// TODO: Make Main Scene a Singleton so that explosions can be added
-		// Also will be required to remove destroyed enemies and stray bullets
+		Instance()->_screen_width = GetScreenWidth();
+		Instance()->_screen_height = GetScreenHeight();
 
-		this->_screen_width = GetScreenWidth();
-		this->_screen_height = GetScreenHeight();
-
-		this->_space_ship = new Player::SpaceShip();
-		this->_test_enemy = new Enemies::Enemy(this->_screen_width / 2.0f, this->_screen_height / 2.0f, 30);
+		Instance()->_space_ship = new Player::SpaceShip();
 	}
 
 	MainScene* MainScene::Instance()
@@ -26,25 +22,27 @@ namespace Scenes
 
 	MainScene::~MainScene()
 	{
-		delete this->_space_ship;
-		delete this->_test_enemy;
+		delete Instance()->_space_ship;
+
+		for (auto& _enemy : Instance()->_enemies)
+			delete _enemy;
+
+		for (auto& _explosion : Instance()->_explosions)
+			delete _explosion;
+
+		for (auto& _collectible : Instance()->_collectibles)
+			delete _collectible;
+
+		Instance()->_enemies.clear();
+		Instance()->_collectibles.clear();
+		Instance()->_explosions.clear();
 	}
 
-	void MainScene::draw()
+	void MainScene::show()
 	{
 		// Space Ship Display and Control
 		this->_space_ship->show();
 		this->_space_ship->update();
-
-		if (this->_test_enemy != nullptr)
-		{
-			// TODO: Testing
-			this->_test_enemy->show();
-			this->_test_enemy->update();
-			this->_test_enemy->checkAndShootIfNearPlayer(this->_space_ship->getSpaceShipPosition());
-
-			this->_space_ship->checkEnemyCollisionWithBullet(this->_test_enemy);
-		}
 
 		// Explosions and Effects
 		for (size_t i = 0; i < this->_explosions.size(); i++)
@@ -59,6 +57,53 @@ namespace Scenes
 				i = -1;
 			}
 		}
+	}
+
+	void MainScene::update()
+	{
+		Instance()->updateStaticObjects();
+		Instance()->updateDynamicObjects();
+	}
+
+	void MainScene::updateStaticObjects()
+	{
+		for (size_t i = 0; i < Instance()->_explosions.size(); i++)
+		{
+			Instance()->_explosions[i]->show();
+			Instance()->_explosions[i]->update();
+
+			if (Instance()->_explosions[i]->explosionComplete())
+			{
+				delete Instance()->_explosions[i];
+				Instance()->_explosions.erase(Instance()->_explosions.begin() + i);
+				i -= 1;
+			}
+		}
+
+		for (size_t i = 0; i < Instance()->_collectibles.size(); i++)
+		{
+			Instance()->_collectibles[i]->show();
+			Instance()->_collectibles[i]->update();
+
+			if (Instance()->_collectibles[i]->isOutOfScreen())
+			{
+				delete Instance()->_collectibles[i];
+				Instance()->_collectibles.erase(Instance()->_collectibles.begin() + i);
+				i -= 1;
+			}
+		}
+	}
+
+	void MainScene::updateDynamicObjects()
+	{
+	}
+
+	void MainScene::addCollectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType)
+	{
+	}
+
+	void MainScene::destroyEnemy(int enemyIndex)
+	{
 	}
 
 	void MainScene::addExplosion(float xPosition, float yPosition, float radius)

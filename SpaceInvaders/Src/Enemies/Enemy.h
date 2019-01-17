@@ -50,6 +50,7 @@ namespace Enemies
 
 	public:
 		Enemy(float xPosition, float yPosition, float enemyBaseWidth);
+		~Enemy();
 		
 		void show();
 		void update();

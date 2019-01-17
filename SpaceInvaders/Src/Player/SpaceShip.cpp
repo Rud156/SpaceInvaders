@@ -21,6 +21,14 @@ namespace Player
 		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}
 
+	SpaceShip::~SpaceShip()
+	{
+		for (auto& _bullet : this->_bullets)
+			delete _bullet;
+
+		this->_bullets.clear();
+	}
+
 	void SpaceShip::show()
 	{
 		const auto bodyColor = Utils::ExtensionFunctions::LerpColor(
@@ -220,29 +228,16 @@ namespace Player
 		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}
 
-	void SpaceShip::checkEnemyCollisionWithBullet(Enemies::Enemy* enemy)
+	void SpaceShip::checkEnemyCollisionWithBullet(Enemies::Enemy* enemy, int enemyIndex)
 	{
 		for (size_t i = 0; i < this->_bullets.size(); i++)
 		{
 			if (enemy->isEnemyHit(this->_bullets[i]->getPosition()))
 			{
 				const auto enemyDead = enemy->checkDeathAndTakeDamage();
-				std::cout << "Enemy Hit: " << std::endl;
 
 				if (enemyDead)
-				{
-					const Vector2 enemyPosition = enemy->getEnemyPosition();
-					Scenes::MainScene::Instance()->addExplosion(
-						enemyPosition.x,
-						enemyPosition.y,
-						30.0f * 7 / 45.0f
-					);
-
-					std::cout << "Enemy Dead!!!" << std::endl;
-
-					delete enemy;
-					enemy = nullptr;
-				}
+					Scenes::MainScene::Instance()->destroyEnemy(enemyIndex);
 
 				delete this->_bullets[i];
 				this->_bullets.erase(this->_bullets.begin() + i);
