@@ -6,7 +6,8 @@ namespace Scenes
 
 	MainScene::MainScene()
 	{
-		createOrResetScene();
+		// Do nothing here
+		// Just making sure that the constructor is private and not accessible to create class instance
 	}
 
 	MainScene* MainScene::Instance()

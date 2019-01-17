@@ -7,7 +7,7 @@
 
 namespace Scenes
 {
-	class MainScene
+	class MainScene final
 	{
 	private:
 		Player::SpaceShip* _space_ship;

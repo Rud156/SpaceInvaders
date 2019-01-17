@@ -11,7 +11,7 @@ int main()
 	const int screenHeight = 450;
 
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
-	const auto mainScene = Scenes::MainScene::Instance();
+	Scenes::MainScene::Instance(); // Create Instance of MainScene
 
 	while (!WindowShouldClose())
 	{
