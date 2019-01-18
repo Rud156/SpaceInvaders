@@ -96,7 +96,7 @@ namespace Player
 			bullet->update();
 		}
 
-		for (size_t i = 0; i < this->_bullets.size(); i++)
+		for (std::size_t i = 0; i < this->_bullets.size(); i++)
 		{
 			if (this->_bullets[i]->isOutOfScreen())
 			{
@@ -218,8 +218,8 @@ namespace Player
 
 	void SpaceShip::resetSpaceShip()
 	{
-		for (size_t i = 0; i < this->_bullets.size(); i++)
-			delete this->_bullets[i];
+		for (auto& _bullet : this->_bullets)
+			delete _bullet;
 		this->_bullets.clear();
 
 		this->_current_shoot_wait_time = this->_min_shoot_wait_time;
@@ -230,7 +230,7 @@ namespace Player
 
 	void SpaceShip::checkEnemyCollisionWithBullet(Enemies::Enemy* enemy, int enemyIndex)
 	{
-		for (size_t i = 0; i < this->_bullets.size(); i++)
+		for (std::size_t i = 0; i < this->_bullets.size(); i++)
 		{
 			if (enemy->isEnemyHit(this->_bullets[i]->getPosition()))
 			{

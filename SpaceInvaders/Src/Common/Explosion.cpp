@@ -23,7 +23,7 @@ namespace Common
 
 	void Explosion::update()
 	{
-		for (size_t i = 0; i < this->_particles.size(); i++)
+		for (std::size_t i = 0; i < this->_particles.size(); i++)
 		{
 			this->_particles[i]->applyForce(this->_gravity);
 			this->_particles[i]->update();
