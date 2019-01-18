@@ -4,26 +4,47 @@
 #include "raylib.h"
 
 #include "Src/Scenes/MainScene.h"
+#include "Src/Scenes/HomeScene.h"
 
 int main()
 {
-	const int screenWidth = 800;
-	const int screenHeight = 450;
-
+	const auto screenWidth = 800;
+	const auto screenHeight = 450;
+	auto sceneType = Enums::Scene::Home;
+	auto gameStarted = false;
+	
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
+	
+	Scenes::HomeScene::Instance(); // Create Instance of HomeScene
 	Scenes::MainScene::Instance(); // Create Instance of MainScene
-
+	
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
-
-		Scenes::MainScene::update();
-
+	
+		switch (sceneType)
+		{
+		case Enums::Main:
+			Scenes::MainScene::update();
+			break;
+	
+		case Enums::Home:
+			gameStarted = Scenes::HomeScene::drawAndCheckForGameStart();
+			if (gameStarted)
+				sceneType = Enums::Scene::Main;
+			break;
+	
+		case Enums::GameOver:
+			break;
+	
+		default: break;
+		}
+	
 		DrawFPS(10, 10);
 		EndDrawing();
 	}
-
+	
 	CloseWindow();
 
 	return 0;

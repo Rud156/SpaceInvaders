@@ -9,7 +9,7 @@ namespace Common
 		this->_screen_height = GetScreenHeight();
 
 		this->_position = {xPosition, yPosition};
-		this->_velocity = {0, float(_screen_height)};
+		this->_velocity = {0, static_cast<float>(_screen_height)};
 		this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, this->_speed);
 
 		this->_angle = 0;

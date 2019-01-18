@@ -13,8 +13,8 @@ namespace Enemies
 		this->_screen_height = GetScreenHeight();
 
 		this->_position_to_reach = {
-			float(GetRandomValue(0, this->_screen_width)),
-			float(GetRandomValue(0, this->_screen_height / 2))
+			static_cast<float>(GetRandomValue(0, this->_screen_width)),
+			static_cast<float>(GetRandomValue(0, this->_screen_height / 2))
 		};
 
 		this->_velocity = {0, 0};
@@ -105,8 +105,8 @@ namespace Enemies
 		if (Utils::VectorHelpers::Mag(this->_velocity) <= 1)
 		{
 			this->_position_to_reach = {
-				float(GetRandomValue(0, this->_screen_width)),
-				float(GetRandomValue(0, this->_screen_height / 2))
+				static_cast<float>(GetRandomValue(0, this->_screen_width)),
+				static_cast<float>(GetRandomValue(0, this->_screen_height / 2))
 			};
 		}
 

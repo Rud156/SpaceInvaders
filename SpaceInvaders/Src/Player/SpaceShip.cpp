@@ -12,8 +12,8 @@ namespace Player
 		this->_window_height = GetScreenHeight();
 
 		this->_position = {
-			float(this->_window_width) / 2,
-			float(this->_window_height) - this->_base_height - 7
+			static_cast<float>(this->_window_width) / 2,
+			static_cast<float>(this->_window_height) - this->_base_height - 7
 		};
 		this->_velocity = {0, 0};
 
@@ -107,7 +107,7 @@ namespace Player
 		}
 	}
 
-	void SpaceShip::moveShip(Enums::Direction direction)
+	void SpaceShip::moveShip(const Enums::Direction direction)
 	{
 		if (this->_position.x < this->_base_width / 2.0f)
 			this->_position.x = this->_base_width / 2.0f + 1;
@@ -115,7 +115,7 @@ namespace Player
 		if (this->_position.x > this->_window_width - this->_base_width / 2.0f)
 			this->_position.x = this->_window_width - this->_base_width / 2.0f - 1;
 
-		this->_velocity = {float(this->_window_width), 0};
+		this->_velocity = { static_cast<float>(this->_window_width), 0};
 		if (direction == Enums::Direction::Left)
 			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, -this->_speed);
 		else

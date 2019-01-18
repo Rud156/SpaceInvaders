@@ -100,7 +100,8 @@ namespace Scenes
 		}
 	}
 
-	void MainScene::addCollectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType)
+	void MainScene::addCollectible(const float xPosition, const float yPosition,
+	                               const Enums::CollectibleType collectibleType)
 	{
 		Instance()->_collectibles.push_back(new Common::Collectible(xPosition, yPosition, collectibleType));
 	}
