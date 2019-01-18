@@ -168,6 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Src/Common/LevelEnemyGenerator.h" />
     <ClInclude Include="Src/Utils/ColorHelpers.h" />
     <ClInclude Include="Src/Common/Collectible.h" />
     <ClInclude Include="Src/Common/Explosion.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="Src/Utils/VectorHelpers.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src/Common/LevelEnemyGenerator.cpp" />
     <ClCompile Include="Src/Utils/ColorHelpers.cpp" />
     <ClCompile Include="Src/Common/Collectible.cpp" />
     <ClCompile Include="Src/Common/Explosion.cpp" />
