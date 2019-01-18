@@ -1,4 +1,5 @@
 #include "MainScene.h"
+#include "../Common/LevelEnemyGenerator.h"
 
 namespace Scenes
 {
@@ -43,7 +44,7 @@ namespace Scenes
 		Instance()->_screen_height = GetScreenHeight();
 
 		Instance()->_space_ship = new Player::SpaceShip();
-		Instance()->createEnemiesBasedOnLevel(levelNumber);
+		Instance()->_enemies = Common::LevelEnemyGenerator::GetEnemyForLevel(levelNumber);
 	}
 
 	void MainScene::update()
@@ -52,39 +53,9 @@ namespace Scenes
 		updateDynamicObjects();
 	}
 
-	void MainScene::createEnemiesBasedOnLevel(int levelNumber)
-	{
-		switch (levelNumber)
-		{
-		case 1:
-			break;
-
-		case 2:
-			break;
-
-		case 3:
-			break;
-
-		case 4:
-			break;
-
-		case 5:
-			break;
-
-		case 6:
-			break;
-
-		case 7:
-			break;
-
-		default:
-			break;
-		}
-	}
-
 	void MainScene::updateStaticObjects()
 	{
-		for (size_t i = 0; i < Instance()->_explosions.size(); i++)
+		for (std::size_t i = 0; i < Instance()->_explosions.size(); i++)
 		{
 			Instance()->_explosions[i]->show();
 			Instance()->_explosions[i]->update();
@@ -97,7 +68,7 @@ namespace Scenes
 			}
 		}
 
-		for (size_t i = 0; i < Instance()->_collectibles.size(); i++)
+		for (std::size_t i = 0; i < Instance()->_collectibles.size(); i++)
 		{
 			Instance()->_collectibles[i]->show();
 			Instance()->_collectibles[i]->update();
@@ -119,7 +90,7 @@ namespace Scenes
 			Instance()->_space_ship->update();
 		}
 
-		for (size_t i = 0; i < Instance()->_enemies.size(); i++)
+		for (std::size_t i = 0; i < Instance()->_enemies.size(); i++)
 		{
 			Instance()->_enemies[i]->show();
 			Instance()->_enemies[i]->update();

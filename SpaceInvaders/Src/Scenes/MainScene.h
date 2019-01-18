@@ -34,8 +34,6 @@ namespace Scenes
 		static void createOrResetScene(int levelNumber);
 		static void update();
 
-		void createEnemiesBasedOnLevel(int levelNumber);
-
 		void addExplosion(float xPosition, float yPosition, float radius);
 		static void addCollectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType);
 		static void destroyEnemy(int enemyIndex);
