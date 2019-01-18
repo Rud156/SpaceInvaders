@@ -19,6 +19,8 @@ namespace Scenes
 		int _screen_width;
 		int _screen_height;
 
+		bool _scene_started;
+
 		static MainScene* _instance;
 		MainScene();
 
@@ -29,8 +31,10 @@ namespace Scenes
 		static MainScene* Instance();
 		~MainScene();
 
-		static void createOrResetScene();
+		static void createOrResetScene(int levelNumber);
 		static void update();
+
+		void createEnemiesBasedOnLevel(int levelNumber);
 
 		void addExplosion(float xPosition, float yPosition, float radius);
 		static void addCollectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType);

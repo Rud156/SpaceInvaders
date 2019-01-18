@@ -6,8 +6,7 @@ namespace Scenes
 
 	MainScene::MainScene()
 	{
-		// Do nothing here
-		// Just making sure that the constructor is private and not accessible to create class instance
+		Instance()->_scene_started = false;
 	}
 
 	MainScene* MainScene::Instance()
@@ -36,18 +35,51 @@ namespace Scenes
 		Instance()->_explosions.clear();
 	}
 
-	void MainScene::createOrResetScene()
+	void MainScene::createOrResetScene(const int levelNumber)
 	{
+		Instance()->_scene_started = true;
+
 		Instance()->_screen_width = GetScreenWidth();
 		Instance()->_screen_height = GetScreenHeight();
 
 		Instance()->_space_ship = new Player::SpaceShip();
+		Instance()->createEnemiesBasedOnLevel(levelNumber);
 	}
 
 	void MainScene::update()
 	{
 		updateStaticObjects();
 		updateDynamicObjects();
+	}
+
+	void MainScene::createEnemiesBasedOnLevel(int levelNumber)
+	{
+		switch (levelNumber)
+		{
+		case 1:
+			break;
+
+		case 2:
+			break;
+
+		case 3:
+			break;
+
+		case 4:
+			break;
+
+		case 5:
+			break;
+
+		case 6:
+			break;
+
+		case 7:
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	void MainScene::updateStaticObjects()
