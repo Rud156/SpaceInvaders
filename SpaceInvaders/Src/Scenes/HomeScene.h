@@ -1,15 +1,17 @@
 #pragma once
-
-#include <string>
+#include "raylib.h"
 
 namespace Scenes
 {
 	class HomeScene
 	{
 	private:
-		const std::string _header = "Space Invaders";
-		const std::string _controls = "Use Arrow Keys to Move and Space to shoot";
-		const std::string _createdBy = "Made by Rud156";
+		const char* _header = "Space Invaders";
+		const char* _controls = "Use Arrow Keys to Move and Space to shoot";
+		const char* _createdBy = "Made by Rud156";
+		const char* _play = "Play";
+
+		Color _button_color = RED;
 
 		int _screen_width;
 		int _screen_height;
@@ -19,6 +21,7 @@ namespace Scenes
 
 	public:
 		static HomeScene* Instance();
+		static void setupScene();
 
 		static bool drawAndCheckForGameStart();
 	};

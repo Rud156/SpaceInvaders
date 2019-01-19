@@ -31,7 +31,7 @@ namespace Scenes
 		static MainScene* Instance();
 		~MainScene();
 
-		static void createOrResetScene(int levelNumber);
+		static void setupOrResetScene(int levelNumber);
 		static void update();
 
 		void addExplosion(float xPosition, float yPosition, float radius);

@@ -12,39 +12,41 @@ int main()
 	const auto screenHeight = 450;
 	auto sceneType = Enums::Scene::Home;
 	auto gameStarted = false;
-	
+
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
-	
+
 	Scenes::HomeScene::Instance(); // Create Instance of HomeScene
 	Scenes::MainScene::Instance(); // Create Instance of MainScene
-	
+
+	Scenes::HomeScene::setupScene();
+
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
-	
+
 		switch (sceneType)
 		{
 		case Enums::Main:
 			Scenes::MainScene::update();
 			break;
-	
+
 		case Enums::Home:
 			gameStarted = Scenes::HomeScene::drawAndCheckForGameStart();
 			if (gameStarted)
 				sceneType = Enums::Scene::Main;
 			break;
-	
+
 		case Enums::GameOver:
 			break;
-	
+
 		default: break;
 		}
-	
+
 		DrawFPS(10, 10);
 		EndDrawing();
 	}
-	
+
 	CloseWindow();
 
 	return 0;

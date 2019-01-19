@@ -7,7 +7,8 @@ namespace Scenes
 
 	MainScene::MainScene()
 	{
-		Instance()->_scene_started = false;
+		// Constructor must be empty and not call any reference
+		// Or a recursive stackoverflow exception will occur
 	}
 
 	MainScene* MainScene::Instance()
@@ -36,7 +37,7 @@ namespace Scenes
 		Instance()->_explosions.clear();
 	}
 
-	void MainScene::createOrResetScene(const int levelNumber)
+	void MainScene::setupOrResetScene(const int levelNumber)
 	{
 		Instance()->_scene_started = true;
 
