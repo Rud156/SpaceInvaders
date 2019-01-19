@@ -11,7 +11,6 @@ int main()
 	const auto screenWidth = 800;
 	const auto screenHeight = 450;
 	auto sceneType = Enums::Scene::Home;
-	auto gameStarted = false;
 
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
 
@@ -32,9 +31,11 @@ int main()
 			break;
 
 		case Enums::Home:
-			gameStarted = Scenes::HomeScene::drawAndCheckForGameStart();
-			if (gameStarted)
-				sceneType = Enums::Scene::Main;
+			{
+				const auto gameStarted = Scenes::HomeScene::drawAndCheckForGameStart();
+				if (gameStarted)
+					sceneType = Enums::Scene::Main;
+			}
 			break;
 
 		case Enums::GameOver:
