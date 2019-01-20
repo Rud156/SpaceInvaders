@@ -24,7 +24,8 @@ namespace Common
 		const auto y = this->_position.y;
 
 		const Rectangle rectangle = {x, y, this->_base_width, this->_base_width};
-		DrawRectanglePro(rectangle, {0, 0}, this->_angle, this->_color);
+		DrawRectanglePro(rectangle, {this->_base_width / 2.0f, this->_base_width / 2.0f},
+		                 this->_angle, this->_color);
 	}
 
 	void Collectible::update()
