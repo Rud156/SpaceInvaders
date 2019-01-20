@@ -4,7 +4,7 @@
 
 namespace Common
 {
-	Collectible::Collectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType)
+	Collectible::Collectible(float xPosition, float yPosition, Enums::BulletType bulletType)
 	{
 		this->_screen_height = GetScreenHeight();
 
@@ -14,8 +14,8 @@ namespace Common
 
 		this->_angle = 0;
 
-		this->_collectibleType = collectibleType;
-		this->_color = Utils::ColorHelpers::CollectibleTypeToColor(collectibleType);
+		this->_bulletType = bulletType;
+		this->_color = Utils::ColorHelpers::CollectibleTypeToColor(bulletType);
 	}
 
 	void Collectible::show() const

@@ -52,17 +52,17 @@ namespace Utils
 		return color;
 	}
 
-	Color ColorHelpers::CollectibleTypeToColor(const Enums::CollectibleType collectibleType)
+	Color ColorHelpers::CollectibleTypeToColor(const Enums::BulletType bulletType)
 	{
-		switch (collectibleType)
+		switch (bulletType)
 		{
-		case Enums::Level1:
+		case Enums::BulletType::SingleBullet:
 			return RED;
 
-		case Enums::Level2:
+		case Enums::BulletType::DoubleBullet:
 			return GREEN;
 
-		case Enums::Level3:
+		case Enums::BulletType::SprayBullet:
 			return BLUE;
 
 		default:

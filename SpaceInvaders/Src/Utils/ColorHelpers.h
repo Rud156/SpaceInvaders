@@ -11,6 +11,6 @@ namespace Utils
 		static int HZVToRGB(int hue, int zest, int val);
 		static Color HSLAToRGBA(int h, int saturation, int lightness);
 
-		static Color CollectibleTypeToColor(Enums::CollectibleType collectibleType);
+		static Color CollectibleTypeToColor(Enums::BulletType bulletType);
 	};
 }

@@ -29,19 +29,31 @@ int main()
 
 		switch (sceneType)
 		{
-		case Enums::Main:
-			Scenes::MainScene::update();
-			break;
-
 		case Enums::Home:
 			{
 				const auto gameStarted = Scenes::HomeScene::drawAndCheckForGameStart();
 				if (gameStarted)
+				{
 					sceneType = Enums::Scene::Main;
+					Scenes::MainScene::setupOrResetScene(1);
+				}
+			}
+			break;
+
+		case Enums::Main:
+			{
+				const auto gameOver = Scenes::MainScene::update();
+				if (gameOver)
+					sceneType = Enums::Scene::GameOver;
 			}
 			break;
 
 		case Enums::GameOver:
+			{
+				const auto resetGame = Scenes::GameOver::drawScene();
+				if (resetGame)
+					sceneType = Enums::Scene::Home;
+			}
 			break;
 
 		default: break;

@@ -20,6 +20,8 @@ namespace Scenes
 		int _screen_height;
 
 		bool _scene_started;
+		int _current_level;
+		const int _max_level = 9;
 
 		static MainScene* _instance;
 		MainScene();
@@ -32,10 +34,10 @@ namespace Scenes
 		~MainScene();
 
 		static void setupOrResetScene(int levelNumber);
-		static void update();
+		static bool update();
 
 		void addExplosion(float xPosition, float yPosition, float radius);
-		static void addCollectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType);
+		static void addCollectible(float xPosition, float yPosition, Enums::BulletType bulletType);
 		static void destroyEnemy(int enemyIndex);
 	};
 }

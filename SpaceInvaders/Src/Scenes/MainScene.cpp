@@ -40,6 +40,7 @@ namespace Scenes
 	void MainScene::setupOrResetScene(const int levelNumber)
 	{
 		Instance()->_scene_started = true;
+		Instance()->_current_level = levelNumber;
 
 		Instance()->_screen_width = GetScreenWidth();
 		Instance()->_screen_height = GetScreenHeight();
@@ -48,10 +49,23 @@ namespace Scenes
 		Instance()->_enemies = Common::LevelEnemyGenerator::GetEnemyForLevel(levelNumber);
 	}
 
-	void MainScene::update()
+	bool MainScene::update()
 	{
+		if (Instance()->_enemies.empty())
+		{
+			Instance()->_current_level += 1;
+
+			if (Instance()->_current_level > Instance()->_max_level)
+				return true;
+
+			Instance()->_enemies = Common::LevelEnemyGenerator::
+				GetEnemyForLevel(Instance()->_current_level);
+		}
+
 		updateStaticObjects();
 		updateDynamicObjects();
+
+		return false;
 	}
 
 	void MainScene::updateStaticObjects()
@@ -97,14 +111,18 @@ namespace Scenes
 			Instance()->_enemies[i]->update();
 
 			if (Instance()->_space_ship != nullptr)
-				Instance()->_enemies[i]->checkAndShootIfNearPlayer(Instance()->_space_ship->getSpaceShipPosition());
+			{
+				Instance()->_enemies[i]->checkAndShootIfNearPlayer
+					(Instance()->_space_ship->getSpaceShipPosition());
+				Instance()->_space_ship->checkEnemyCollisionWithBullet(Instance()->_enemies[i], i);
+			}
 		}
 	}
 
 	void MainScene::addCollectible(const float xPosition, const float yPosition,
-	                               const Enums::CollectibleType collectibleType)
+	                               const Enums::BulletType bulletType)
 	{
-		Instance()->_collectibles.push_back(new Common::Collectible(xPosition, yPosition, collectibleType));
+		Instance()->_collectibles.push_back(new Common::Collectible(xPosition, yPosition, bulletType));
 	}
 
 	void MainScene::destroyEnemy(int enemyIndex)

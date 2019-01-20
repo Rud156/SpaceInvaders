@@ -237,7 +237,7 @@ namespace Player
 				const auto enemyDead = enemy->checkDeathAndTakeDamage();
 
 				if (enemyDead)
-					Scenes::MainScene::Instance()->destroyEnemy(enemyIndex);
+					Scenes::MainScene::destroyEnemy(enemyIndex);
 
 				delete this->_bullets[i];
 				this->_bullets.erase(this->_bullets.begin() + i);

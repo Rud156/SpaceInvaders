@@ -15,12 +15,12 @@ namespace Common
 
 		int _screen_height;
 
-		Enums::CollectibleType _collectibleType;
+		Enums::BulletType _bulletType;
 		Color _color;
 		float _angle;
 
 	public:
-		Collectible(float xPosition, float yPosition, Enums::CollectibleType collectibleType);
+		Collectible(float xPosition, float yPosition, Enums::BulletType bulletType);
 
 		void show() const;
 		void update();
