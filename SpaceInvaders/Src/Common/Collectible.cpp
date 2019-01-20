@@ -32,7 +32,7 @@ namespace Common
 		this->_position = Utils::VectorHelpers::Add(this->_position,
 		                                            Utils::VectorHelpers::Mult(this->_velocity, GetFrameTime()));
 
-		this->_angle = this->_angle + 2.0f * GetFrameTime();
+		this->_angle = this->_angle + this->_rotation_speed * GetFrameTime();
 		this->_angle = this->_angle > 360 ? 0 : this->_angle;
 	}
 

@@ -20,6 +20,7 @@ namespace Player
 
 		this->_god_mode = false;
 		this->_bullet_type = Enums::BulletType::SingleBullet;
+		this->_health = this->_max_health;
 	}
 
 	SpaceShip::~SpaceShip()
@@ -35,7 +36,7 @@ namespace Player
 		const auto bodyColor = Utils::ColorHelpers::LerpColor(
 			this->_zero_health_color,
 			this->_space_ship_color,
-			this->_health / 100.0f
+			this->_health / this->_max_health
 		);
 
 		const auto x = this->_position.x;
@@ -57,27 +58,40 @@ namespace Player
 		DrawPolyExLines(this->_ship_points, this->_ship_points_count, bodyColor);
 
 		Color currentColor;
-		if (this->_health < 50)
+		const auto healthRatio = this->_health / this->_max_health;
+
+		if (healthRatio <= 0.5f)
 			currentColor = Utils::ColorHelpers::LerpColor(
 				this->_zero_health_color,
 				this->_half_health_color,
-				this->_health / 50.0f
+				healthRatio * 2
 			);
 		else
 			currentColor = Utils::ColorHelpers::LerpColor(
 				this->_half_health_color,
 				this->_full_health_color,
-				(this->_health - 50) / 50.0f
+				(healthRatio - 0.5f) * 2.0f
 			);
 
 		DrawRectangle(0, this->_window_height - 7,
-		              this->_window_width * this->_health / 100, 10, currentColor);
+		              this->_window_width * healthRatio, 10, currentColor);
+
+
+		if (this->_god_mode)
+		{
+			const auto godModeTextWidth = MeasureText(this->_god_mode_text, 20);
+			DrawText(this->_god_mode_text, this->_window_width - godModeTextWidth - 20,
+			         this->_window_height - 30, 20, PURPLE);
+		}
 	}
 
 	void SpaceShip::update()
 	{
 		if (!IsKeyDown(KEY_SPACE) || this->_current_shoot_wait_time < 0)
 			this->_current_shoot_wait_time = this->_min_shoot_wait_time;
+
+		if (IsKeyDown(KEY_G) && IsKeyDown(KEY_O) && IsKeyDown(KEY_D))
+			this->activateGodMode();
 
 		if (IsKeyDown(KEY_LEFT) && IsKeyDown(KEY_RIGHT))
 		{
@@ -215,7 +229,7 @@ namespace Player
 		this->_bullets.clear();
 
 		this->_current_shoot_wait_time = this->_min_shoot_wait_time;
-		this->_health = 100;
+		this->_health = this->_max_health;
 		this->_god_mode = false;
 		this->_bullet_type = Enums::BulletType::SingleBullet;
 	}

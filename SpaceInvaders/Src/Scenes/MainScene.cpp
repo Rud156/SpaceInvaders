@@ -13,6 +13,24 @@ namespace Scenes
 		// Or a recursive stackoverflow exception will occur
 	}
 
+	void MainScene::clearMemory()
+	{
+		delete Instance()->_space_ship;
+
+		for (auto& _enemy : Instance()->_enemies)
+			delete _enemy;
+
+		for (auto& _explosion : Instance()->_explosions)
+			delete _explosion;
+
+		for (auto& _collectible : Instance()->_collectibles)
+			delete _collectible;
+
+		Instance()->_enemies.clear();
+		Instance()->_collectibles.clear();
+		Instance()->_explosions.clear();
+	}
+
 	bool MainScene::countdownToGameAndStart()
 	{
 		if (Instance()->_current_countdown <= 0)
@@ -54,24 +72,13 @@ namespace Scenes
 
 	MainScene::~MainScene()
 	{
-		delete Instance()->_space_ship;
-
-		for (auto& _enemy : Instance()->_enemies)
-			delete _enemy;
-
-		for (auto& _explosion : Instance()->_explosions)
-			delete _explosion;
-
-		for (auto& _collectible : Instance()->_collectibles)
-			delete _collectible;
-
-		Instance()->_enemies.clear();
-		Instance()->_collectibles.clear();
-		Instance()->_explosions.clear();
+		Instance()->clearMemory();
 	}
 
 	void MainScene::setupOrResetScene(const int levelNumber)
 	{
+		Instance()->clearMemory();
+
 		Instance()->_current_countdown = Instance()->_max_countdown;
 
 		Instance()->_scene_started = true;

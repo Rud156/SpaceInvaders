@@ -11,6 +11,7 @@ namespace Common
 		Vector2 _velocity;
 
 		const int _speed = 67;
+		const int _rotation_speed = 20;
 		const int _base_width = 15;
 
 		int _screen_height;

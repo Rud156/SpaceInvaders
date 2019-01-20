@@ -34,6 +34,7 @@ namespace Player
 		Vector2 _velocity;
 
 		const int _speed = 500;
+		const int _max_health = 200;
 		float _health = 100;
 
 		const Color _full_health_color = DARKGREEN;
@@ -42,6 +43,7 @@ namespace Player
 		const Color _space_ship_color = SKYBLUE;
 
 		bool _god_mode;
+		const char* _god_mode_text = "God Mode On!!!";
 		Enums::BulletType _bullet_type;
 
 		void moveShip(Enums::Direction direction);

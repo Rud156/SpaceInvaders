@@ -7,18 +7,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpaceInvaders", "SpaceInvad
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		MasterBuild|x64 = MasterBuild|x64
 		MasterBuild|x86 = MasterBuild|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{06ACB433-4F9F-4A6F-9ACF-9D8CC32D31C2}.Debug|x64.ActiveCfg = Debug|x64
-		{06ACB433-4F9F-4A6F-9ACF-9D8CC32D31C2}.Debug|x64.Build.0 = Debug|x64
 		{06ACB433-4F9F-4A6F-9ACF-9D8CC32D31C2}.Debug|x86.ActiveCfg = Debug|Win32
 		{06ACB433-4F9F-4A6F-9ACF-9D8CC32D31C2}.Debug|x86.Build.0 = Debug|Win32
-		{06ACB433-4F9F-4A6F-9ACF-9D8CC32D31C2}.MasterBuild|x64.ActiveCfg = MasterBuild|x64
-		{06ACB433-4F9F-4A6F-9ACF-9D8CC32D31C2}.MasterBuild|x64.Build.0 = MasterBuild|x64
 		{06ACB433-4F9F-4A6F-9ACF-9D8CC32D31C2}.MasterBuild|x86.ActiveCfg = Debug|Win32
 		{06ACB433-4F9F-4A6F-9ACF-9D8CC32D31C2}.MasterBuild|x86.Build.0 = Debug|Win32
 	EndGlobalSection

@@ -32,10 +32,10 @@ namespace Scenes
 		static MainScene* _instance;
 		MainScene();
 
+		static void clearMemory();
 		static bool countdownToGameAndStart();
 
 		static void updateStaticObjects();
-
 		static void updateEnemies();
 		static void updatePlayer();
 
