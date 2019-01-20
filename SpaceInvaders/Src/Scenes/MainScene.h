@@ -28,6 +28,7 @@ namespace Scenes
 
 		static void updateStaticObjects();
 		static void updateDynamicObjects();
+		static void checkPlayerCollectibleCollision();
 
 	public:
 		static MainScene* Instance();

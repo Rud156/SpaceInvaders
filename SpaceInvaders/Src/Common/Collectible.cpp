@@ -41,12 +41,13 @@ namespace Common
 		return this->_position.y > this->_screen_height + this->_base_width;
 	}
 
-	bool Collectible::didCollectibleCollide(const Vector2 point) const
+	Vector2 Collectible::getPosition() const
 	{
-		const auto x = this->_position.x;
-		const auto y = this->_position.y;
+		return this->_position;
+	}
 
-		const Rectangle rectangle = {x, y, this->_base_width, this->_base_width};
-		return CheckCollisionPointRec(point, rectangle);
+	Enums::BulletType Collectible::getBulletType() const
+	{
+		return this->_bulletType;
 	}
 }

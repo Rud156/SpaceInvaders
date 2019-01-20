@@ -25,7 +25,9 @@ namespace Common
 		void show() const;
 		void update();
 
+		Vector2 getPosition() const;
+		Enums::BulletType getBulletType() const;
+
 		bool isOutOfScreen() const;
-		bool didCollectibleCollide(Vector2 point) const;
 	};
 }

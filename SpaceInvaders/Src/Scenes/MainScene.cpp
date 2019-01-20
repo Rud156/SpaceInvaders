@@ -55,7 +55,7 @@ namespace Scenes
 		{
 			Instance()->_current_level += 1;
 
-			if (Instance()->_current_level > Instance()->_max_level)
+			if (Instance()->_current_level > 2)
 				return true;
 
 			Instance()->_enemies = Common::LevelEnemyGenerator::
@@ -115,6 +115,25 @@ namespace Scenes
 				Instance()->_enemies[i]->checkAndShootIfNearPlayer
 					(Instance()->_space_ship->getSpaceShipPosition());
 				Instance()->_space_ship->checkEnemyCollisionWithBullet(Instance()->_enemies[i], i);
+
+				checkPlayerCollectibleCollision();
+			}
+		}
+	}
+
+	void MainScene::checkPlayerCollectibleCollision()
+	{
+		for (std::size_t i = 0; i < Instance()->_collectibles.size(); i++)
+		{
+			const auto collectiblePosition = Instance()->_collectibles[i]->getPosition();
+			if (Instance()->_space_ship->didSpaceShipCollide(collectiblePosition))
+			{
+				const auto collectibleBulletType = Instance()->_collectibles[i]->getBulletType();
+				Instance()->_space_ship->setBulletType(collectibleBulletType);
+
+				delete Instance()->_collectibles[i];
+				Instance()->_collectibles.erase(Instance()->_collectibles.begin() + i);
+				i -= 1;
 			}
 		}
 	}

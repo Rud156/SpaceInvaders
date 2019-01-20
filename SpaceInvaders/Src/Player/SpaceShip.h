@@ -6,6 +6,7 @@
 
 #include <vector>
 #include "../Enemies/Enemy.h"
+#include "../Common/Collectible.h"
 
 namespace Player
 {
@@ -41,7 +42,6 @@ namespace Player
 		Enums::BulletType _bullet_type;
 
 		void moveShip(Enums::Direction direction);
-		void setBulletType(Enums::BulletType bulletType);
 		std::vector<Common::Bullet*> getBullets() const;
 		void shootBullets();
 
@@ -58,6 +58,8 @@ namespace Player
 		void decreaseHealth(float amount);
 		bool isDestroyed();
 		void resetSpaceShip();
+
+		void setBulletType(Enums::BulletType bulletType);
 
 		void checkEnemyCollisionWithBullet(Enemies::Enemy* enemy, int enemyIndex);
 		bool didSpaceShipCollide(const Vector2 point) const;

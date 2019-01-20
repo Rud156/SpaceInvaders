@@ -115,7 +115,7 @@ namespace Player
 		if (this->_position.x > this->_window_width - this->_base_width / 2.0f)
 			this->_position.x = this->_window_width - this->_base_width / 2.0f - 1;
 
-		this->_velocity = { static_cast<float>(this->_window_width), 0};
+		this->_velocity = {static_cast<float>(this->_window_width), 0};
 		if (direction == Enums::Direction::Left)
 			this->_velocity = Utils::VectorHelpers::SetMag(this->_velocity, -this->_speed);
 		else
