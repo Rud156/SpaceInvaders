@@ -3,7 +3,7 @@
 
 namespace Scenes
 {
-	class HomeScene
+	class HomeScene final
 	{
 	private:
 		const char* _header = "Space Invaders";

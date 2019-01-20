@@ -1,11 +1,15 @@
 #pragma once
 
 #include "raylib.h"
+#include "../Enemies/Enemy.h"
 #include "../Enums/Enums.h"
 #include "../Common/Bullet.h"
-
 #include <vector>
-#include "../Enemies/Enemy.h"
+
+namespace Enemies
+{
+	class Enemy;
+}
 
 namespace Player
 {

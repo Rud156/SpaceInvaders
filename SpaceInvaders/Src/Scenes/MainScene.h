@@ -1,9 +1,9 @@
 #pragma once
-#include "../Player/SpaceShip.h"
 #include "../Enemies/Enemy.h"
+#include "../Player/SpaceShip.h"
 #include "../Common/Explosion.h"
-#include <vector>
 #include "../Common/Collectible.h"
+#include <vector>
 
 namespace Scenes
 {

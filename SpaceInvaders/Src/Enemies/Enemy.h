@@ -3,9 +3,13 @@
 #include "raylib.h"
 #include "../Common/Bullet.h"
 #include "../Player/SpaceShip.h"
-
 #include <vector>
 #include <random>
+
+namespace Player
+{
+	class SpaceShip;
+}
 
 namespace Enemies
 {
@@ -25,7 +29,6 @@ namespace Enemies
 		const int _max_speed = 167;
 		const int _max_force = 5;
 
-		const Color _color = GREEN;
 		float _base_width;
 		float _base_height;
 		float _shooter_height;

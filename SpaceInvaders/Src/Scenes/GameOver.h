@@ -3,7 +3,7 @@
 
 namespace Scenes
 {
-	class GameOver
+	class GameOver final
 	{
 	private:
 		int _screen_width;

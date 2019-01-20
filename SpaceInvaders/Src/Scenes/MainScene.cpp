@@ -62,7 +62,7 @@ namespace Scenes
 
 			if (Instance()->_current_level > Instance()->_max_level)
 			{
-				GameOver::Instance()->setGameState(true);
+				GameOver::setGameState(true);
 				return true;
 			}
 
@@ -122,7 +122,7 @@ namespace Scenes
 			{
 				Instance()->_enemies[i]->checkAndShootIfNearPlayer
 					(Instance()->_space_ship->getSpaceShipPosition());
-				Instance()->_space_ship->checkEnemyCollisionWithBullet(Instance()->_enemies[i], i);
+				// Instance()->_space_ship->checkEnemyCollisionWithBullet(Instance()->_enemies[i], i);
 
 				checkPlayerCollectibleCollision();
 			}
