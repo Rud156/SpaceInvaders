@@ -5,6 +5,7 @@
 
 #include "Src/Scenes/MainScene.h"
 #include "Src/Scenes/HomeScene.h"
+#include "Src/Scenes/GameOver.h"
 
 int main()
 {
@@ -16,8 +17,10 @@ int main()
 
 	Scenes::HomeScene::Instance(); // Create Instance of HomeScene
 	Scenes::MainScene::Instance(); // Create Instance of MainScene
+	Scenes::GameOver::Instance(); // Create Instance of GameOverScene
 
 	Scenes::HomeScene::setupScene();
+	Scenes::GameOver::setupScene();
 
 	while (!WindowShouldClose())
 	{

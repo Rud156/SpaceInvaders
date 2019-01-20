@@ -168,6 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Src/Scenes/GameOver.h" />
     <ClInclude Include="Src/Scenes/HomeScene.h" />
     <ClInclude Include="Src/Common/LevelEnemyGenerator.h" />
     <ClInclude Include="Src/Utils/ColorHelpers.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Src/Utils/VectorHelpers.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src/Scenes/GameOver.cpp" />
     <ClCompile Include="Src/Scenes/HomeScene.cpp" />
     <ClCompile Include="Src/Common/LevelEnemyGenerator.cpp" />
     <ClCompile Include="Src/Utils/ColorHelpers.cpp" />

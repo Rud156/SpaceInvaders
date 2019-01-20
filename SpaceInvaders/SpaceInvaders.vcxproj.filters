@@ -87,6 +87,9 @@
     <ClInclude Include="Src/Scenes/HomeScene.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Src/Scenes/GameOver.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceInvaders.cpp">
@@ -126,6 +129,9 @@
       <Filter>Source Files\Common</Filter>
     </ClCompile>
     <ClCompile Include="Src/Scenes/HomeScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Src/Scenes/GameOver.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
   </ItemGroup>

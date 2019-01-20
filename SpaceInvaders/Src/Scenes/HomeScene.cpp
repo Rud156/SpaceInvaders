@@ -1,5 +1,4 @@
 #include "HomeScene.h"
-#include "raylib.h"
 
 namespace Scenes
 {
