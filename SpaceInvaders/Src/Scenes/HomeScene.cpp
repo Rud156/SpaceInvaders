@@ -22,27 +22,10 @@ namespace Scenes
 	{
 		Instance()->_screen_width = GetScreenWidth();
 		Instance()->_screen_height = GetScreenHeight();
-
-		Instance()->_test_explosion = new Common::Explosion(
-			Instance()->_screen_width / 2.0f, Instance()->_screen_height / 2.0f,
-			5
-		);
 	}
 
 	bool HomeScene::drawAndCheckForGameStart()
 	{
-		if (Instance()->_test_explosion->explosionComplete())
-		{
-			delete Instance()->_test_explosion;
-
-			Instance()->_test_explosion = new Common::Explosion(
-				Instance()->_screen_width / 2.0f, Instance()->_screen_height / 2.0f,
-				5
-			);
-		}
-		Instance()->_test_explosion->show();
-		Instance()->_test_explosion->update();
-
 		const auto screenMiddle = Instance()->_screen_width / 2;
 
 		const auto headerWidth = MeasureText(Instance()->_header, 30);

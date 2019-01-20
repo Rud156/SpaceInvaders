@@ -12,8 +12,6 @@ namespace Scenes
 		const char* _createdBy = "Made by Rud156";
 		const char* _play = "Play";
 
-		Common::Explosion* _test_explosion;
-
 		Color _button_color = RED;
 
 		int _screen_width;
