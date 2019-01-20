@@ -47,7 +47,7 @@ namespace Common
 		                                            Utils::VectorHelpers::Mult(this->_velocity, GetFrameTime()));
 	}
 
-	Vector2 Bullet::getPosition()
+	Vector2 Bullet::getPosition() const
 	{
 		return this->_position;
 	}

@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "../Utils/ExtensionFunctions.h"
 #include "../Utils/VectorHelpers.h"
+#include "../Utils/ColorHelpers.h"
 
 namespace Enemies
 {
@@ -47,10 +48,10 @@ namespace Enemies
 		const auto mappedHealth = Utils::ExtensionFunctions::Map(this->_current_health,
 		                                                         0, this->_max_health, 0, 100);
 		if (mappedHealth < 50)
-			currentColor = Utils::ExtensionFunctions::LerpColor(this->_zero_health_color,
+			currentColor = Utils::ColorHelpers::LerpColor(this->_zero_health_color,
 			                                                    this->_half_health_color, mappedHealth / 50.0f);
 		else
-			currentColor = Utils::ExtensionFunctions::LerpColor(this->_half_health_color,
+			currentColor = Utils::ColorHelpers::LerpColor(this->_half_health_color,
 			                                                    this->_full_health_color, (mappedHealth - 50) / 50.0f);
 
 		const float x = this->_position.x;

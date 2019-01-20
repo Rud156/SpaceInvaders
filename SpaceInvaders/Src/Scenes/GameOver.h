@@ -11,6 +11,7 @@ namespace Scenes
 
 		const char* _game_won_text = "You Won The Game !!!";
 		const char* _game_lost_text = "You Lost The Game...";
+		const char* _replay_text = "Replay";
 
 		Color _button_color;
 

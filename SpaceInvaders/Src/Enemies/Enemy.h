@@ -33,7 +33,7 @@ namespace Enemies
 
 		const int _magnitude_limit = 50;
 		std::vector<Common::Bullet*> _bullets;
-		const float _min_shoot_wait_time = 0.1f;
+		const float _min_shoot_wait_time = 0.3f;
 		float _current_shoot_wait_time;
 
 		float _max_health;

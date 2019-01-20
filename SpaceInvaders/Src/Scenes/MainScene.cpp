@@ -1,5 +1,6 @@
 #include "MainScene.h"
 #include "../Common/LevelEnemyGenerator.h"
+#include "../Utils/ExtensionFunctions.h"
 
 namespace Scenes
 {
@@ -55,7 +56,7 @@ namespace Scenes
 		{
 			Instance()->_current_level += 1;
 
-			if (Instance()->_current_level > 2)
+			if (Instance()->_current_level > Instance()->_max_level)
 				return true;
 
 			Instance()->_enemies = Common::LevelEnemyGenerator::
@@ -146,6 +147,17 @@ namespace Scenes
 
 	void MainScene::destroyEnemy(int enemyIndex)
 	{
+		const auto randomValue = GetRandomValue(0, 1000);
+		const auto enemyPosition = Instance()->_enemies[enemyIndex]->getEnemyPosition();
+		if (randomValue % 2 == 0)
+		{
+			Instance()->_collectibles.push_back(
+				new Common::Collectible(
+					enemyPosition.x, enemyPosition.y, Utils::ExtensionFunctions::getRandomBulletType()
+				)
+			);
+		}
+
 		delete Instance()->_enemies[enemyIndex];
 		Instance()->_enemies.erase(Instance()->_enemies.begin() + enemyIndex);
 	}

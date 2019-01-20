@@ -1,4 +1,5 @@
 #include "ColorHelpers.h"
+#include "ExtensionFunctions.h"
 
 namespace Utils
 {
@@ -68,5 +69,21 @@ namespace Utils
 		default:
 			return RAYWHITE;
 		}
+	}
+
+	Color ColorHelpers::LerpColor(const Color c1, const Color c2, const float amount)
+	{
+		const auto l0 = ExtensionFunctions::Lerp(c1.r, c2.r, amount);
+		const auto l1 = ExtensionFunctions::Lerp(c1.g, c2.g, amount);
+		const auto l2 = ExtensionFunctions::Lerp(c1.b, c2.b, amount);
+		const auto l3 = ExtensionFunctions::Lerp(c1.a, c2.a, amount);
+
+		Color color;
+		color.r = l0;
+		color.g = l1;
+		color.b = l2;
+		color.a = l3;
+
+		return color;
 	}
 }

@@ -1,5 +1,6 @@
 #include "SpaceShip.h"
 #include "../Utils/ExtensionFunctions.h"
+#include "../Utils/ColorHelpers.h"
 #include "../Utils/VectorHelpers.h"
 #include "../Scenes/MainScene.h"
 #include <iostream>
@@ -31,7 +32,7 @@ namespace Player
 
 	void SpaceShip::show()
 	{
-		const auto bodyColor = Utils::ExtensionFunctions::LerpColor(
+		const auto bodyColor = Utils::ColorHelpers::LerpColor(
 			this->_zero_health_color,
 			this->_space_ship_color,
 			this->_health / 100.0f
@@ -57,13 +58,13 @@ namespace Player
 
 		Color currentColor;
 		if (this->_health < 50)
-			currentColor = Utils::ExtensionFunctions::LerpColor(
+			currentColor = Utils::ColorHelpers::LerpColor(
 				this->_zero_health_color,
 				this->_half_health_color,
 				this->_health / 50.0f
 			);
 		else
-			currentColor = Utils::ExtensionFunctions::LerpColor(
+			currentColor = Utils::ColorHelpers::LerpColor(
 				this->_half_health_color,
 				this->_full_health_color,
 				(this->_health - 50) / 50.0f
@@ -142,7 +143,7 @@ namespace Player
 				this->_position.y - this->_base_height * 1.5f,
 				this->_base_width / 10,
 				true,
-				RED
+				Utils::ColorHelpers::CollectibleTypeToColor(Enums::BulletType::SingleBullet)
 			));
 			break;
 
@@ -160,7 +161,7 @@ namespace Player
 					this->_position.y - this->_base_height * 1.5f,
 					this->_base_width / 10,
 					true,
-					DARKBLUE
+					Utils::ColorHelpers::CollectibleTypeToColor(Enums::BulletType::DoubleBullet)
 				));
 			}
 			break;
@@ -173,7 +174,7 @@ namespace Player
 					this->_position.y - this->_base_height * 1.5f,
 					this->_base_width / 10,
 					true,
-					YELLOW,
+					Utils::ColorHelpers::CollectibleTypeToColor(Enums::BulletType::SprayBullet),
 					-40 + i
 				));
 			}

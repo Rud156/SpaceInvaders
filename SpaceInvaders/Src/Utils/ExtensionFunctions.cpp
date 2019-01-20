@@ -1,4 +1,5 @@
 #include "ExtensionFunctions.h"
+#include "raylib.h"
 
 namespace Utils
 {
@@ -23,19 +24,24 @@ namespace Utils
 		return amount * (stop - start) + start;
 	}
 
-	Color ExtensionFunctions::LerpColor(const Color c1, const Color c2, const float amount)
+	Enums::BulletType ExtensionFunctions::getRandomBulletType()
 	{
-		const auto l0 = Lerp(c1.r, c2.r, amount);
-		const auto l1 = Lerp(c1.g, c2.g, amount);
-		const auto l2 = Lerp(c1.b, c2.b, amount);
-		const auto l3 = Lerp(c1.a, c2.a, amount);
+		const auto randomValue = GetRandomValue(0, 1000);
+		const auto normalizedRandomValue = randomValue % 3;
 
-		Color color;
-		color.r = l0;
-		color.g = l1;
-		color.b = l2;
-		color.a = l3;
+		switch (normalizedRandomValue)
+		{
+		case 0:
+			return Enums::BulletType::SingleBullet;
 
-		return color;
+		case 1:
+			return Enums::BulletType::DoubleBullet;
+
+		case 2:
+			return Enums::BulletType::SprayBullet;
+
+		default:
+			return Enums::BulletType::SingleBullet;
+		}
 	}
 }
