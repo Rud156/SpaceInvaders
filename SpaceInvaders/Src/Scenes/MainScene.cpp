@@ -1,6 +1,7 @@
 #include "MainScene.h"
 #include "../Common/LevelEnemyGenerator.h"
 #include "../Utils/ExtensionFunctions.h"
+#include "GameOver.h"
 
 namespace Scenes
 {
@@ -60,7 +61,10 @@ namespace Scenes
 			Instance()->_current_level += 1;
 
 			if (Instance()->_current_level > Instance()->_max_level)
+			{
+				GameOver::Instance()->setGameState(true);
 				return true;
+			}
 
 			Instance()->_enemies = Common::LevelEnemyGenerator::
 				GetEnemyForLevel(Instance()->_current_level);
@@ -182,9 +186,11 @@ namespace Scenes
 	{
 		delete Instance()->_space_ship;
 		Instance()->_scene_started = false;
+
+		GameOver::Instance()->setGameState(false);
 	}
 
-	void MainScene::addExplosion(float xPosition, float yPosition, float radius)
+	void MainScene::addExplosion(const float xPosition, const float yPosition, const float radius)
 	{
 		this->_explosions.push_back(new Common::Explosion(xPosition, yPosition, radius));
 	}

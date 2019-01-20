@@ -6,7 +6,6 @@
 
 #include <vector>
 #include "../Enemies/Enemy.h"
-#include "../Common/Collectible.h"
 
 namespace Player
 {

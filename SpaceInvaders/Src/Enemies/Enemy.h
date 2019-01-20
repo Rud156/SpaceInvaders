@@ -2,9 +2,10 @@
 
 #include "raylib.h"
 #include "../Common/Bullet.h"
+#include "../Player/SpaceShip.h"
+
 #include <vector>
 #include <random>
-#include "../Player/SpaceShip.h"
 
 namespace Enemies
 {
@@ -52,7 +53,7 @@ namespace Enemies
 	public:
 		Enemy(float xPosition, float yPosition, float enemyBaseWidth);
 		~Enemy();
-		
+
 		void show();
 		void update();
 
