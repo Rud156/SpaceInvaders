@@ -18,7 +18,7 @@ namespace Common
 	public:
 		Particle(float x, float y, Color color, float radius);
 
-		void show();
+		void show() const;
 		void update();
 
 		void applyForce(Vector2 force);

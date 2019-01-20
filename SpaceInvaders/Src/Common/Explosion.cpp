@@ -38,7 +38,7 @@ namespace Common
 
 	void Explosion::explode()
 	{
-		for (auto i = 0; i < 1; i++)
+		for (auto i = 0; i < 200; i++)
 		{
 			const auto particle = new Particle(this->_position.x, this->_position.y,
 			                                   this->_color, this->_radius);

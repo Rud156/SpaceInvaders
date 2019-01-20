@@ -16,25 +16,24 @@ namespace Common
 		this->_radius = radius;
 	}
 
-	void Particle::show()
+	void Particle::show() const
 	{
 		const auto fadeColor = Fade(this->_color, this->_alpha);
 		const auto mappedRadius = Utils::ExtensionFunctions::Map(this->_alpha, 0, 1,
 		                                                         0, this->_radius);
 
 		DrawCircle(this->_position.x, this->_position.y, mappedRadius, fadeColor);
-
-		this->_alpha -= 0.05f * GetFrameTime();
 	}
 
 	void Particle::update()
 	{
-		this->_velocity = Utils::VectorHelpers::Mult(this->_velocity, 0.5f);
 		this->_velocity = Utils::VectorHelpers::Add(this->_velocity, this->_acceleration);
 
 		this->_position = Utils::VectorHelpers::Add(this->_position,
 		                                            Utils::VectorHelpers::Mult(this->_velocity, GetFrameTime()));
+
 		this->_acceleration = Utils::VectorHelpers::Mult(this->_acceleration, 0);
+		this->_alpha -= 0.6f * GetFrameTime();
 	}
 
 	void Particle::applyForce(const Vector2 force)

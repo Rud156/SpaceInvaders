@@ -25,7 +25,7 @@ namespace Scenes
 
 		Instance()->_test_explosion = new Common::Explosion(
 			Instance()->_screen_width / 2.0f, Instance()->_screen_height / 2.0f,
-			15
+			5
 		);
 	}
 
@@ -37,7 +37,7 @@ namespace Scenes
 
 			Instance()->_test_explosion = new Common::Explosion(
 				Instance()->_screen_width / 2.0f, Instance()->_screen_height / 2.0f,
-				15
+				5
 			);
 		}
 		Instance()->_test_explosion->show();
