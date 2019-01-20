@@ -1,6 +1,8 @@
 #include "ExtensionFunctions.h"
 #include "raylib.h"
 
+#include <string>
+
 namespace Utils
 {
 	float ExtensionFunctions::Map(const float from, const float fromMin, const float fromMax, const float toMin,
@@ -22,6 +24,13 @@ namespace Utils
 	float ExtensionFunctions::Lerp(const float start, const float stop, const float amount)
 	{
 		return amount * (stop - start) + start;
+	}
+
+	const char* ExtensionFunctions::FormatFloatToStringInt(const float number)
+	{
+		const auto intNumber = static_cast<int>(number);
+		std::string value = std::to_string(intNumber);
+		return value.c_str();
 	}
 
 	Enums::BulletType ExtensionFunctions::getRandomBulletType()

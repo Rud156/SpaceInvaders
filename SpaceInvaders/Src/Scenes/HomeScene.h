@@ -9,6 +9,7 @@ namespace Scenes
 	private:
 		const char* _header = "Space Invaders";
 		const char* _controls = "Use Arrow Keys to Move and Space to shoot";
+		const char* _levelCount = "Survive 9 waves of enemies";
 		const char* _createdBy = "Made by Rud156";
 		const char* _play = "Play";
 

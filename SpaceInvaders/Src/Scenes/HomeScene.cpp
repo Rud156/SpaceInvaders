@@ -34,6 +34,9 @@ namespace Scenes
 		const auto controlsWidth = MeasureText(Instance()->_controls, 20);
 		DrawText(Instance()->_controls, screenMiddle - controlsWidth / 2, 100, 20, MAGENTA);
 
+		const auto levelCountWidth = MeasureText(Instance()->_levelCount, 20);
+		DrawText(Instance()->_levelCount, screenMiddle - levelCountWidth / 2, 100 + 50, 20, DARKGREEN);
+
 		const auto createdByWidth = MeasureText(Instance()->_createdBy, 30);
 		DrawText(Instance()->_createdBy, screenMiddle - createdByWidth / 2,
 		         Instance()->_screen_height - 40, 30, BLUE);

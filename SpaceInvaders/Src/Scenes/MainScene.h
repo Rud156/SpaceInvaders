@@ -23,11 +23,21 @@ namespace Scenes
 		int _current_level;
 		const int _max_level = 9;
 
+		const char* _first_play = "Game Starts In...";
+		const char* _subsequent_play = "Next Wave In...";
+
+		const int _max_countdown = 3;
+		float _current_countdown = _max_countdown;
+
 		static MainScene* _instance;
 		MainScene();
 
+		static bool countdownToGameAndStart();
 		static void updateStaticObjects();
 		static void updateDynamicObjects();
+
+		static void createExtraEnemiesBasedOnSize(float xPosition, float yPosition, float enemyBaseWidth);
+
 		static void checkPlayerCollectibleCollision();
 
 	public:
@@ -39,7 +49,6 @@ namespace Scenes
 
 		void addExplosion(float xPosition, float yPosition, float radius);
 		static void addCollectible(float xPosition, float yPosition, Enums::BulletType bulletType);
-		static void createExtraEnemiesBasedOnSize(float xPosition, float yPosition, float enemyBaseWidth);
 
 		static void destroyEnemy(int enemyIndex);
 		static void destroyPlayer();

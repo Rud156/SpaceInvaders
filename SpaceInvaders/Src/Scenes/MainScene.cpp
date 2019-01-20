@@ -13,6 +13,33 @@ namespace Scenes
 		// Or a recursive stackoverflow exception will occur
 	}
 
+	bool MainScene::countdownToGameAndStart()
+	{
+		const auto displayTime = Utils::ExtensionFunctions::
+			FormatFloatToStringInt(Instance()->_current_countdown);
+
+		const char* displayText;
+		if (Instance()->_current_level <= 1)
+			displayText = Instance()->_first_play;
+		else
+			displayText = Instance()->_subsequent_play;
+
+		const auto screenWidthMiddle = Instance()->_screen_width / 2;
+		const auto screenHeightMiddle = Instance()->_screen_height / 2;
+
+		const auto displayTextWidth = MeasureText(displayText, 25);
+		DrawText(displayText, screenWidthMiddle - displayTextWidth / 2,
+		         screenHeightMiddle - 50, 25, RED);
+
+		const auto displayTimeWidth = MeasureText(displayTime, 30);
+		DrawText(displayTime, screenWidthMiddle - displayTimeWidth / 2,
+		         screenHeightMiddle + 50, 30, BLUE);
+
+		Instance()->_current_countdown -= GetFrameTime();
+
+		return Instance()->_current_countdown <= 0;
+	}
+
 	MainScene* MainScene::Instance()
 	{
 		if (_instance == nullptr)
@@ -41,6 +68,8 @@ namespace Scenes
 
 	void MainScene::setupOrResetScene(const int levelNumber)
 	{
+		Instance()->_current_countdown = Instance()->_max_countdown;
+
 		Instance()->_scene_started = true;
 		Instance()->_current_level = levelNumber;
 
@@ -174,6 +203,7 @@ namespace Scenes
 		const auto enemyBaseWidth = Instance()->_enemies[enemyIndex]->getEnemyBaseWidth();
 
 		Instance()->addExplosion(enemyPosition.x, enemyPosition.y, enemyBaseWidth * 7 / 45);
+		Instance()->createExtraEnemiesBasedOnSize(enemyPosition.x, enemyPosition.y, enemyBaseWidth);
 
 		const auto randomValue = GetRandomValue(0, 1000);
 		if (randomValue % 2 == 0)
