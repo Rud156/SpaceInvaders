@@ -4,6 +4,7 @@
 #include "../Common/Bullet.h"
 #include <vector>
 #include <random>
+#include "../Player/SpaceShip.h"
 
 namespace Enemies
 {
@@ -56,10 +57,12 @@ namespace Enemies
 		void update();
 
 		void checkAndShootIfNearPlayer(Vector2 playerPosition);
-		
+
+		void checkPlayerCollisionWithBullet(Player::SpaceShip* player);
 		bool checkDeathAndTakeDamage();
 		bool isEnemyHit(const Vector2 point) const;
 
 		Vector2 getEnemyPosition() const;
+		float getEnemyBaseWidth() const;
 	};
 }

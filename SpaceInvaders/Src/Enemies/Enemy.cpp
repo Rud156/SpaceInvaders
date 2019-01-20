@@ -2,6 +2,7 @@
 #include "../Utils/ExtensionFunctions.h"
 #include "../Utils/VectorHelpers.h"
 #include "../Utils/ColorHelpers.h"
+#include "../Scenes/MainScene.h"
 
 namespace Enemies
 {
@@ -49,10 +50,10 @@ namespace Enemies
 		                                                         0, this->_max_health, 0, 100);
 		if (mappedHealth < 50)
 			currentColor = Utils::ColorHelpers::LerpColor(this->_zero_health_color,
-			                                                    this->_half_health_color, mappedHealth / 50.0f);
+			                                              this->_half_health_color, mappedHealth / 50.0f);
 		else
 			currentColor = Utils::ColorHelpers::LerpColor(this->_half_health_color,
-			                                                    this->_full_health_color, (mappedHealth - 50) / 50.0f);
+			                                              this->_full_health_color, (mappedHealth - 50) / 50.0f);
 
 		const float x = this->_position.x;
 		const float y = this->_position.y;
@@ -89,7 +90,7 @@ namespace Enemies
 		this->_ship_shape_points[15] = {x - this->_base_width / 2, y + this->_base_height / 2};
 		this->_ship_shape_points[16] = {x - this->_base_width / 2, y - this->_base_height * 1.5f};
 
-		DrawPolyExLines(this->_ship_shape_points, this->_ship_shape_points_count, RED);
+		DrawPolyExLines(this->_ship_shape_points, this->_ship_shape_points_count, currentColor);
 	}
 
 	void Enemy::update()
@@ -183,6 +184,25 @@ namespace Enemies
 		this->_current_shoot_wait_time -= GetFrameTime();
 	}
 
+	void Enemy::checkPlayerCollisionWithBullet(Player::SpaceShip* player)
+	{
+		for (std::size_t i = 0; i < this->_bullets.size(); i++)
+		{
+			if (player->didSpaceShipCollide(this->_bullets[i]->getPosition()))
+			{
+				const auto isPlayerDead = player->decreaseHealthAndCheckDeath
+					(2 * this->_base_width / 10);
+
+				if (isPlayerDead)
+					Scenes::MainScene::destroyPlayer();
+
+				delete this->_bullets[i];
+				this->_bullets.erase(this->_bullets.begin() + i);
+				i = i == 0 ? 0 : i - 1;
+			}
+		}
+	}
+
 	bool Enemy::checkDeathAndTakeDamage()
 	{
 		this->_current_health -= 20;
@@ -216,5 +236,10 @@ namespace Enemies
 	Vector2 Enemy::getEnemyPosition() const
 	{
 		return this->_position;
+	}
+
+	float Enemy::getEnemyBaseWidth() const
+	{
+		return this->_base_width;
 	}
 }

@@ -52,6 +52,9 @@ namespace Scenes
 
 	bool MainScene::update()
 	{
+		if (!Instance()->_scene_started)
+			return true;
+
 		if (Instance()->_enemies.empty())
 		{
 			Instance()->_current_level += 1;
@@ -145,21 +148,40 @@ namespace Scenes
 		Instance()->_collectibles.push_back(new Common::Collectible(xPosition, yPosition, bulletType));
 	}
 
+	void MainScene::createExtraEnemiesBasedOnSize(const float xPosition, const float yPosition,
+	                                              const float enemyBaseWidth)
+	{
+		if (enemyBaseWidth > 100)
+		{
+			for (auto i = 0; i < 2; i++)
+			{
+				Instance()->_enemies.push_back(
+					new Enemies::Enemy(xPosition, yPosition, enemyBaseWidth / 2)
+				);
+			}
+		}
+	}
+
 	void MainScene::destroyEnemy(int enemyIndex)
 	{
-		const auto randomValue = GetRandomValue(0, 1000);
 		const auto enemyPosition = Instance()->_enemies[enemyIndex]->getEnemyPosition();
+		const auto enemyBaseWidth = Instance()->_enemies[enemyIndex]->getEnemyBaseWidth();
+
+		Instance()->addExplosion(enemyPosition.x, enemyPosition.y, enemyBaseWidth * 7 / 45);
+
+		const auto randomValue = GetRandomValue(0, 1000);
 		if (randomValue % 2 == 0)
-		{
-			Instance()->_collectibles.push_back(
-				new Common::Collectible(
-					enemyPosition.x, enemyPosition.y, Utils::ExtensionFunctions::getRandomBulletType()
-				)
-			);
-		}
+			Instance()->addCollectible(enemyPosition.x, enemyPosition.y,
+			                           Utils::ExtensionFunctions::getRandomBulletType());
 
 		delete Instance()->_enemies[enemyIndex];
 		Instance()->_enemies.erase(Instance()->_enemies.begin() + enemyIndex);
+	}
+
+	void MainScene::destroyPlayer()
+	{
+		delete Instance()->_space_ship;
+		Instance()->_scene_started = false;
 	}
 
 	void MainScene::addExplosion(float xPosition, float yPosition, float radius)

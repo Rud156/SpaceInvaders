@@ -195,26 +195,17 @@ namespace Player
 		this->_current_shoot_wait_time -= GetFrameTime();
 	}
 
-	void SpaceShip::decreaseHealth(float amount)
+	bool SpaceShip::decreaseHealthAndCheckDeath(const float amount)
 	{
 		if (!this->_god_mode)
 			this->_health -= amount;
+
+		return this->_health < 0;
 	}
 
 	void SpaceShip::activateGodMode()
 	{
 		this->_god_mode = true;
-	}
-
-	bool SpaceShip::isDestroyed()
-	{
-		if (this->_health <= 0)
-		{
-			this->_health = 0;
-			return true;
-		}
-
-		return false;
 	}
 
 	void SpaceShip::resetSpaceShip()

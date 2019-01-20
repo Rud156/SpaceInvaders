@@ -55,8 +55,7 @@ namespace Player
 		void show();
 		void update();
 
-		void decreaseHealth(float amount);
-		bool isDestroyed();
+		bool decreaseHealthAndCheckDeath(float amount);
 		void resetSpaceShip();
 
 		void setBulletType(Enums::BulletType bulletType);

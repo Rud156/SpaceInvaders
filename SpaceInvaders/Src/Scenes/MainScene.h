@@ -39,6 +39,9 @@ namespace Scenes
 
 		void addExplosion(float xPosition, float yPosition, float radius);
 		static void addCollectible(float xPosition, float yPosition, Enums::BulletType bulletType);
+		static void createExtraEnemiesBasedOnSize(float xPosition, float yPosition, float enemyBaseWidth);
+
 		static void destroyEnemy(int enemyIndex);
+		static void destroyPlayer();
 	};
 }
