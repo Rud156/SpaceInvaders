@@ -122,7 +122,9 @@ namespace Scenes
 			{
 				Instance()->_enemies[i]->checkAndShootIfNearPlayer
 					(Instance()->_space_ship->getSpaceShipPosition());
-				// Instance()->_space_ship->checkEnemyCollisionWithBullet(Instance()->_enemies[i], i);
+
+				Instance()->_enemies[i]->checkPlayerCollisionWithBullet(Instance()->_space_ship);
+				Instance()->_space_ship->checkEnemyCollisionWithBullet(Instance()->_enemies[i], i);
 
 				checkPlayerCollectibleCollision();
 			}
@@ -187,7 +189,7 @@ namespace Scenes
 		delete Instance()->_space_ship;
 		Instance()->_scene_started = false;
 
-		GameOver::Instance()->setGameState(false);
+		GameOver::setGameState(false);
 	}
 
 	void MainScene::addExplosion(const float xPosition, const float yPosition, const float radius)

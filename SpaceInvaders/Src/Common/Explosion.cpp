@@ -10,7 +10,7 @@ namespace Common
 		this->_radius = radius;
 
 		const auto randomColor = GetRandomValue(0, 359);
-		this->_color = Utils::ColorHelpers::HSLAToRGBA(randomColor, 100, 100);
+		this->_color = Utils::ColorHelpers::HslToRgb(randomColor, 1, 0.5f);
 
 		this->explode();
 	}
@@ -38,7 +38,7 @@ namespace Common
 
 	void Explosion::explode()
 	{
-		for (auto i = 0; i < 200; i++)
+		for (auto i = 0; i < 1; i++)
 		{
 			const auto particle = new Particle(this->_position.x, this->_position.y,
 			                                   this->_color, this->_radius);

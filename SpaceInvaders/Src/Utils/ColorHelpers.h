@@ -8,8 +8,8 @@ namespace Utils
 	{
 	public:
 
-		static int HZVToRGB(int hue, int zest, int val);
-		static Color HSLAToRGBA(int h, int saturation, int lightness);
+		static float HueToRgb(float hue, float zest, float val);
+		static Color HslToRgb(float hue, float saturation, float lightness);
 
 		static Color CollectibleTypeToColor(Enums::BulletType bulletType);
 		static Color LerpColor(Color c1, Color c2, float amount);

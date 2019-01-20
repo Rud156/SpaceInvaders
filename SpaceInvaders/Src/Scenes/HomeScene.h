@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "../Common/Explosion.h"
 
 namespace Scenes
 {
@@ -10,6 +11,8 @@ namespace Scenes
 		const char* _controls = "Use Arrow Keys to Move and Space to shoot";
 		const char* _createdBy = "Made by Rud156";
 		const char* _play = "Play";
+
+		Common::Explosion* _test_explosion;
 
 		Color _button_color = RED;
 

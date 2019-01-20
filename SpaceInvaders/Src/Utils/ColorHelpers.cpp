@@ -3,7 +3,7 @@
 
 namespace Utils
 {
-	auto ColorHelpers::HZVToRGB(int hue, const int zest, const int val) -> int
+	float ColorHelpers::HueToRgb(float hue, const float zest, const float val)
 	{
 		if (hue < 0)
 			hue += 6;
@@ -19,36 +19,23 @@ namespace Utils
 			return zest;
 	}
 
-	Color ColorHelpers::HSLAToRGBA(const int h, const int saturation, const int lightness)
+	Color ColorHelpers::HslToRgb(float hue, const float saturation, const float lightness)
 	{
-		const auto hue = h * 6;
-		const auto sat = saturation;
-		const auto li = lightness;
-
 		Color color;
+		float val;
 
-		if (sat == 0)
-		{
-			color.r = li;
-			color.g = li;
-			color.b = li;
-			color.a = lightness;
-		}
+		hue /= 60.0f;
+
+		if (lightness <= 0.5f)
+			val = lightness * (saturation + 1);
 		else
-		{
-			int val;
-			if (li < 0.5)
-				val = (1 + sat) * li;
-			else
-				val = li + sat - li * sat;
+			val = lightness + saturation - (lightness * saturation);
+		const auto zest = lightness * 2.0f - val;
 
-			const auto zest = 2 * li - val;
-
-			color.r = ColorHelpers::HZVToRGB(hue + 2, zest, val);
-			color.g = ColorHelpers::HZVToRGB(hue, zest, val);
-			color.b = ColorHelpers::HZVToRGB(hue - 2, zest, val);
-			color.a = lightness;
-		}
+		color.r = HueToRgb(hue + 2, zest, val) * 255;
+		color.g = HueToRgb(hue, zest, val) * 255;
+		color.b = HueToRgb(hue - 2, zest, val) * 255;
+		color.a = 255;
 
 		return color;
 	}
