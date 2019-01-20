@@ -33,11 +33,13 @@ namespace Scenes
 		MainScene();
 
 		static bool countdownToGameAndStart();
+
 		static void updateStaticObjects();
-		static void updateDynamicObjects();
+
+		static void updateEnemies();
+		static void updatePlayer();
 
 		static void createExtraEnemiesBasedOnSize(float xPosition, float yPosition, float enemyBaseWidth);
-
 		static void checkPlayerCollectibleCollision();
 
 	public:

@@ -15,8 +15,11 @@ namespace Scenes
 
 	bool MainScene::countdownToGameAndStart()
 	{
+		if (Instance()->_current_countdown <= 0)
+			return true;
+
 		const auto displayTime = Utils::ExtensionFunctions::
-			FormatFloatToStringInt(Instance()->_current_countdown);
+			FormatFloatToStringInt(Instance()->_current_countdown + 1);
 
 		const char* displayText;
 		if (Instance()->_current_level <= 1)
@@ -31,8 +34,9 @@ namespace Scenes
 		DrawText(displayText, screenWidthMiddle - displayTextWidth / 2,
 		         screenHeightMiddle - 50, 25, RED);
 
-		const auto displayTimeWidth = MeasureText(displayTime, 30);
-		DrawText(displayTime, screenWidthMiddle - displayTimeWidth / 2,
+		const auto displayTimeCString = displayTime.c_str();
+		const auto displayTimeWidth = MeasureText(displayTimeCString, 30);
+		DrawText(displayTimeCString, screenWidthMiddle - displayTimeWidth / 2,
 		         screenHeightMiddle + 50, 30, BLUE);
 
 		Instance()->_current_countdown -= GetFrameTime();
@@ -85,8 +89,16 @@ namespace Scenes
 		if (!Instance()->_scene_started)
 			return true;
 
+		updateStaticObjects();
+		updatePlayer();
+
+		const auto countdownComplete = Instance()->countdownToGameAndStart();
+		if (!countdownComplete)
+			return false;
+
 		if (Instance()->_enemies.empty())
 		{
+			Instance()->_current_countdown = Instance()->_max_countdown;
 			Instance()->_current_level += 1;
 
 			if (Instance()->_current_level > Instance()->_max_level)
@@ -99,8 +111,7 @@ namespace Scenes
 				GetEnemyForLevel(Instance()->_current_level);
 		}
 
-		updateStaticObjects();
-		updateDynamicObjects();
+		updateEnemies();
 
 		return false;
 	}
@@ -134,14 +145,8 @@ namespace Scenes
 		}
 	}
 
-	void MainScene::updateDynamicObjects()
+	void MainScene::updateEnemies()
 	{
-		if (Instance()->_space_ship != nullptr)
-		{
-			Instance()->_space_ship->show();
-			Instance()->_space_ship->update();
-		}
-
 		for (std::size_t i = 0; i < Instance()->_enemies.size(); i++)
 		{
 			Instance()->_enemies[i]->show();
@@ -157,6 +162,15 @@ namespace Scenes
 
 				checkPlayerCollectibleCollision();
 			}
+		}
+	}
+
+	void MainScene::updatePlayer()
+	{
+		if (Instance()->_space_ship != nullptr)
+		{
+			Instance()->_space_ship->show();
+			Instance()->_space_ship->update();
 		}
 	}
 

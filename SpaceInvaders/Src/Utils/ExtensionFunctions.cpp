@@ -1,7 +1,5 @@
-#include "ExtensionFunctions.h"
 #include "raylib.h"
-
-#include <string>
+#include "ExtensionFunctions.h"
 
 namespace Utils
 {
@@ -26,11 +24,10 @@ namespace Utils
 		return amount * (stop - start) + start;
 	}
 
-	const char* ExtensionFunctions::FormatFloatToStringInt(const float number)
+	std::string ExtensionFunctions::FormatFloatToStringInt(const float number)
 	{
 		const auto intNumber = static_cast<int>(number);
-		std::string value = std::to_string(intNumber);
-		return value.c_str();
+		return std::to_string(intNumber);
 	}
 
 	Enums::BulletType ExtensionFunctions::getRandomBulletType()
