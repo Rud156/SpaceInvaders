@@ -29,6 +29,11 @@ namespace Scenes
 		const int _max_countdown = 3;
 		float _current_countdown = _max_countdown;
 
+		Sound _explosion_sound;
+		bool _explosion_sound_loaded;
+		Sound _collectible_sound;
+		bool _collectible_sound_loaded;
+
 		static MainScene* _instance;
 		MainScene();
 

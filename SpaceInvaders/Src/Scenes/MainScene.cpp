@@ -25,6 +25,16 @@ namespace Scenes
 
 		for (auto& _collectible : Instance()->_collectibles)
 			delete _collectible;
+		if (Instance()->_explosion_sound_loaded)
+		{
+			UnloadSound(Instance()->_explosion_sound);
+			Instance()->_explosion_sound_loaded = false;
+		}
+		if (Instance()->_collectible_sound_loaded)
+		{
+			UnloadSound(Instance()->_collectible_sound);
+			Instance()->_collectible_sound_loaded = false;
+		}
 
 		Instance()->_enemies.clear();
 		Instance()->_collectibles.clear();
@@ -89,6 +99,11 @@ namespace Scenes
 
 		Instance()->_space_ship = new Player::SpaceShip();
 		Instance()->_enemies = Common::LevelEnemyGenerator::GetEnemyForLevel(levelNumber);
+
+		Instance()->_explosion_sound = LoadSound("resources/audio/explosion.wav");
+		Instance()->_explosion_sound_loaded = true;
+		Instance()->_collectible_sound = LoadSound("resources/audio/pickup.wav");
+		Instance()->_collectible_sound_loaded = true;
 	}
 
 	bool MainScene::update()
@@ -191,6 +206,8 @@ namespace Scenes
 				const auto collectibleBulletType = Instance()->_collectibles[i]->getBulletType();
 				Instance()->_space_ship->setBulletType(collectibleBulletType);
 
+				PlaySound(Instance()->_collectible_sound);
+
 				delete Instance()->_collectibles[i];
 				Instance()->_collectibles.erase(Instance()->_collectibles.begin() + i);
 				i -= 1;
@@ -245,6 +262,7 @@ namespace Scenes
 
 	void MainScene::addExplosion(const float xPosition, const float yPosition, const float radius)
 	{
+		PlaySound(Instance()->_explosion_sound);
 		this->_explosions.push_back(new Common::Explosion(xPosition, yPosition, radius));
 	}
 }

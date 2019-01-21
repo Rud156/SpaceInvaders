@@ -3,7 +3,6 @@
 #include "../Utils/ColorHelpers.h"
 #include "../Utils/VectorHelpers.h"
 #include "../Scenes/MainScene.h"
-#include <iostream>
 
 namespace Player
 {
@@ -21,10 +20,14 @@ namespace Player
 		this->_god_mode = false;
 		this->_bullet_type = Enums::BulletType::SingleBullet;
 		this->_health = this->_max_health;
+
+		this->_shoot_sound = LoadSound("resources/audio/shoot.wav");
 	}
 
 	SpaceShip::~SpaceShip()
 	{
+		UnloadSound(this->_shoot_sound);
+
 		for (auto& _bullet : this->_bullets)
 			delete _bullet;
 
@@ -202,6 +205,7 @@ namespace Player
 	{
 		if (this->_current_shoot_wait_time == this->_min_shoot_wait_time)
 		{
+			PlaySound(this->_shoot_sound);
 			std::vector<Common::Bullet*> bullets = this->getBullets();
 			this->_bullets.insert(this->_bullets.end(), bullets.begin(), bullets.end());
 		}

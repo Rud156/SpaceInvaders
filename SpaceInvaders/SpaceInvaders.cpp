@@ -30,7 +30,8 @@ int main()
 		BeginDrawing();
 		ClearBackground(BLACK);
 
-		PlaySound(backgroundMusic);
+		if (!IsSoundPlaying(backgroundMusic))
+			PlaySound(backgroundMusic);
 
 		switch (sceneType)
 		{

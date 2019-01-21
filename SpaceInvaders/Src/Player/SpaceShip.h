@@ -37,6 +37,8 @@ namespace Player
 		const int _max_health = 200;
 		float _health = 100;
 
+		Sound _shoot_sound;
+
 		const Color _full_health_color = DARKGREEN;
 		const Color _half_health_color = YELLOW;
 		const Color _zero_health_color = RED;
