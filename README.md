@@ -1,5 +1,5 @@
 # SpaceInvaders
-#### A simple space inavders clone made using RayLib in C++
+#### A simple space invaders clone made using RayLib in C++
 > Find out more about RayLib [here](https://www.raylib.com/).
 
 ### Objective:
