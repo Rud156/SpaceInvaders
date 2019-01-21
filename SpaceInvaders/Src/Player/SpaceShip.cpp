@@ -187,7 +187,7 @@ namespace Player
 			for (int i = 0; i < 80; i += 10)
 			{
 				bullets.push_back(new Common::Bullet(
-					this->_position.x,
+					this->_position.x - this->_shooter_width / 2.0f,
 					this->_position.y - this->_base_height * 1.5f,
 					this->_base_width / 10,
 					true,
