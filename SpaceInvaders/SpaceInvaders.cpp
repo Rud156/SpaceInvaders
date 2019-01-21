@@ -14,6 +14,9 @@ int main()
 	auto sceneType = Enums::Scene::Home;
 
 	InitWindow(screenWidth, screenHeight, "Space Invaders");
+	InitAudioDevice();
+
+	const auto backgroundMusic = LoadSound("resources/audio/background.wav");
 
 	Scenes::HomeScene::Instance(); // Create Instance of HomeScene
 	Scenes::MainScene::Instance(); // Create Instance of MainScene
@@ -26,6 +29,8 @@ int main()
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
+
+		PlaySound(backgroundMusic);
 
 		switch (sceneType)
 		{
@@ -63,6 +68,9 @@ int main()
 		EndDrawing();
 	}
 
+	UnloadSound(backgroundMusic);
+
+	CloseAudioDevice();
 	CloseWindow();
 
 	return 0;

@@ -204,6 +204,12 @@
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\..\..\..\Rockin%27So\Documents\Visual Studio 2017\Projects\Simple Programs\SpaceInvaders\SpaceInvaders\resources\audio\background.wav" />
+    <Media Include="..\..\..\..\..\..\..\Rockin%27So\Documents\Visual Studio 2017\Projects\Simple Programs\SpaceInvaders\SpaceInvaders\resources\audio\explosion.wav" />
+    <Media Include="..\..\..\..\..\..\..\Rockin%27So\Documents\Visual Studio 2017\Projects\Simple Programs\SpaceInvaders\SpaceInvaders\resources\audio\pickup.wav" />
+    <Media Include="..\..\..\..\..\..\..\Rockin%27So\Documents\Visual Studio 2017\Projects\Simple Programs\SpaceInvaders\SpaceInvaders\resources\audio\shoot.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

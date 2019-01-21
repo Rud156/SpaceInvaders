@@ -46,6 +46,9 @@
     <Filter Include="Source Files\Player">
       <UniqueIdentifier>{a8cb349e-e520-448b-918d-7c4300aec3e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Audio">
+      <UniqueIdentifier>{953e021c-ebf6-47da-8278-421986265d70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src/Common/Bullet.h">
@@ -137,5 +140,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\..\..\..\Rockin%27So\Documents\Visual Studio 2017\Projects\Simple Programs\SpaceInvaders\SpaceInvaders\resources\audio\background.wav">
+      <Filter>Resource Files\Audio</Filter>
+    </Media>
+    <Media Include="..\..\..\..\..\..\..\Rockin%27So\Documents\Visual Studio 2017\Projects\Simple Programs\SpaceInvaders\SpaceInvaders\resources\audio\explosion.wav">
+      <Filter>Resource Files\Audio</Filter>
+    </Media>
+    <Media Include="..\..\..\..\..\..\..\Rockin%27So\Documents\Visual Studio 2017\Projects\Simple Programs\SpaceInvaders\SpaceInvaders\resources\audio\pickup.wav">
+      <Filter>Resource Files\Audio</Filter>
+    </Media>
+    <Media Include="..\..\..\..\..\..\..\Rockin%27So\Documents\Visual Studio 2017\Projects\Simple Programs\SpaceInvaders\SpaceInvaders\resources\audio\shoot.wav">
+      <Filter>Resource Files\Audio</Filter>
+    </Media>
   </ItemGroup>
 </Project>
