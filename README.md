@@ -1,6 +1,6 @@
 # SpaceInvaders
 #### A simple space inavders clone made using RayLib in C++
-> Find out more about RayLib [here](https://raylib.com/).
+> Find out more about RayLib [here](https://raylib.com/https://www.raylib.com/).
 
 ### Objective:
 Destroy all enemies and survive for 9 waves.
