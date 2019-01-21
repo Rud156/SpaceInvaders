@@ -8,6 +8,11 @@ Destroy all enemies and survive for 9 waves.
 ### Controls:
 - Use Left and Right Arrow Keys to move
 - Press and hold Space to shoot
+- Press Esc to close the game
+
+### Building The Game:
+- You need to have raylib installed on your system
+- Follow https://github.com/raysan5/raylib/wiki/Create-Visual-Studio-Project to setup the build system using Visual Studio
 
 > Gameplay video can be found at https://github.com/Rud156/SpaceInvaders/tree/master/Video/Space%20Invaders.mp4
 

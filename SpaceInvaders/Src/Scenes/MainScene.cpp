@@ -254,7 +254,6 @@ namespace Scenes
 
 	void MainScene::destroyPlayer()
 	{
-		delete Instance()->_space_ship;
 		Instance()->_scene_started = false;
 
 		GameOver::setGameState(false);

@@ -35,7 +35,7 @@ namespace Player
 
 		const int _speed = 500;
 		const int _max_health = 200;
-		float _health = 100;
+		float _health = _max_health;
 
 		Sound _shoot_sound;
 

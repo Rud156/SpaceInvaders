@@ -35,7 +35,7 @@ int main()
 
 		switch (sceneType)
 		{
-		case Enums::Home:
+		case Enums::Scene::Home:
 			{
 				const auto gameStarted = Scenes::HomeScene::drawAndCheckForGameStart();
 				if (gameStarted)
@@ -46,7 +46,7 @@ int main()
 			}
 			break;
 
-		case Enums::Main:
+		case Enums::Scene::Main:
 			{
 				const auto gameOver = Scenes::MainScene::update();
 				if (gameOver)
@@ -57,7 +57,7 @@ int main()
 			}
 			break;
 
-		case Enums::GameOver:
+		case Enums::Scene::GameOver:
 			{
 				Scenes::GameOver::drawScene();
 				const auto resetGame = Scenes::GameOver::updateScene();
