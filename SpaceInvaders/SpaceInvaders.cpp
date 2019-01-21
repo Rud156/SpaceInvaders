@@ -50,13 +50,17 @@ int main()
 			{
 				const auto gameOver = Scenes::MainScene::update();
 				if (gameOver)
+				{
 					sceneType = Enums::Scene::GameOver;
+					Scenes::GameOver::clearScene();
+				}
 			}
 			break;
 
 		case Enums::GameOver:
 			{
-				const auto resetGame = Scenes::GameOver::drawScene();
+				Scenes::GameOver::drawScene();
+				const auto resetGame = Scenes::GameOver::updateScene();
 				if (resetGame)
 					sceneType = Enums::Scene::Home;
 			}
