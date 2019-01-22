@@ -16,6 +16,9 @@ Destroy all enemies and survive for 9 waves.
 
 > Gameplay video can be found at https://github.com/Rud156/SpaceInvaders/tree/master/Video/Space%20Invaders.mp4
 
+### Download:
+> A built version of the game can be downloaded from https://github.com/Rud156/SpaceInvaders/tree/master/Build/SpaceInvaders.zip
+
 ### ScreenShots:
 ![Main Screen](./Screenshots/Shot_1.png)
 ![Game Start](./Screenshots/Shot_2.png)
